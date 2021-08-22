@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
+// ! EOIN
+
+// MAIN HERO
+
+div.no-pad{
+  padding: 0;
+}
+
+.hero-img{
+  background: url('https://mlskmwrajmdu.i.optimole.com/w:auto/h:auto/q:auto/https://www.palmamusicstudios.com/wp-content/uploads/2019/12/P8388.jpg');
+  background-position: center;
+  background-size: cover;
+  // color: rgb(212, 197, 197);
+}
+
+.has-inline{
+  display: inline-block;
+}
+
+.has-width{
+  width: 100%;
+}
+div.py-5 {
+  padding-top: 10rem !important;
+  padding-bottom: 10rem !important;
+}
+
+div.css-yk16xz-control{
+  border: 1px solid white;
+}
+
+// ! CHRISTIAN
+
+
+
+// ! HARRY
+
+// Navbar
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    margin-right: 10px;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  Button {
+    margin-left: 5px;
+    margin-bottom: 3px;
+  }
+  .no-button {
+    margin-bottom: 3px;
+  }
+}
+
+// Login
+
+.login, .register {
+  height: 80vh;
+  background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  Form {
+    border-radius: 5px;
+    padding: 12px;
+    background-color: whitesmoke;
+  }
+  .form-vertical-align {
+    margin-top: 15vh;
+  }
+}
+
+.login {
+  background-image: url('https://res.cloudinary.com/dn11uqgux/image/upload/v1629407610/sei_project_3_studio_images/blackbird_studio1_wxndsw.jpg');
+}
+
+.register {
+  background-image: url('https://res.cloudinary.com/dn11uqgux/image/upload/v1629408030/sei_project_3_studio_images/a_sharp1_idhzec.jpg');
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  .footer-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .footer-title {
+    display: flex;
+    align-items: center;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+  .made-by {
+    font-size: small;
+  }
+}
+
+
+@import "~bootstrap/scss/bootstrap"
