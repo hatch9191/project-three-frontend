@@ -6,25 +6,37 @@
 
 // ! EOIN
 
-// MAIN HERO
+.map-container {
+  height: calc(100vh - 52px);
+  width: 100%;
+}
 
 div.no-pad{
   padding: 0;
 }
 
 .hero-img{
-  background: url('https://mlskmwrajmdu.i.optimole.com/w:auto/h:auto/q:auto/https://www.palmamusicstudios.com/wp-content/uploads/2019/12/P8388.jpg');
+  background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url("https://mlskmwrajmdu.i.optimole.com/w:auto/h:auto/q:auto/https://www.palmamusicstudios.com/wp-content/uploads/2019/12/P8388.jpg");
   background-position: center;
   background-size: cover;
   // color: rgb(212, 197, 197);
+}
+
+.center-text{
+  width: 80%;
 }
 
 .has-inline{
   display: inline-block;
 }
 
-.has-width{
-  width: 100%;
+h1.display-5{
+  color: white;
+}
+
+.btn.has-width{
+  width: 90%;
+  color: white;
 }
 div.py-5 {
   padding-top: 10rem !important;
@@ -33,6 +45,113 @@ div.py-5 {
 
 div.css-yk16xz-control{
   border: 1px solid white;
+}
+
+div.white-bg{
+  background-color: white;
+  border-radius: 5px;
+}
+
+//! Card
+div.display-card{
+  // width: 20rem;
+  height: 16rem;
+  // background: url('https://milocostudios.com/wp-content/themes/miloco/timthumb.php?src=https://milocostudios.com/wp-content/uploads/2015/03/Longtermlet.jpg&w=734&h=370&zc=1&q=100');
+  background-position: center;
+  background-size: cover;
+  color:white;
+}
+
+.card-body{
+  height: 16rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  text-align: start;
+}
+// .display-card-hor{
+//   height: 16rem;
+// }
+
+.card-body.middle-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sponsor{
+  width: 100%;
+}
+
+
+img.height-100{
+  height: 100%;
+}
+
+.card-body.top-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.card-body.center-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button.btn{
+  color:white;
+  filter: drop-shadow(0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.2));
+}
+
+.card-shadow{
+  filter: drop-shadow(0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.2));
+
+}
+
+button.btn:hover, .display-card:hover{
+  transform: scale(1.01);
+}
+
+.flexi{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-inline{
+  display: inline-block;
+}
+
+.flexi-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+div.list-block-item.flexi-row{
+  display: inline-block;
+}
+
+select.remove-border{
+  border: 1px solid white;
+}
+
+button.full-height{
+  height: 60%;
+  margin-top: .7rem;
+}
+
+
+.mb-3.px-1.py-3.white-bg.row{
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 // ! CHRISTIAN
