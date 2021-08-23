@@ -12,15 +12,16 @@ function Filter({ location }) {
   // const [popup, setPopup] = React.useState(null)
 
 
-
   const filterStudios = () => {
+
     return location.state.studios.studios.filter(studio => {
+      console.log(studio.accommodation)
       return (
         (location.state.continentValue.continentValue === 'all' || studio.location.continent.toLowerCase() === location.state.continentValue.continentValue) &&
         (location.state.pricingValue.pricingValue === 'all' || String(studio.rate) === location.state.pricingValue.pricingValue) &&
         (location.state.genreValue.genreValue === 'all' || studio.genres.some(genre => genre.toLowerCase() === location.state.genreValue.genreValue)) &&
         (location.state.townValue.townValue === 'all' || studio.location.town.toLowerCase() === location.state.townValue.townValue) &&
-        (location.state.accomodationValue.accomodationValue === 'all' || studio.accomodationValue)
+        (location.state.accommodationValue.accommodationValue === 'all' || studio.accommodation)
       )
     })
   }

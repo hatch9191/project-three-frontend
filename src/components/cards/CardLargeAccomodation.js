@@ -7,7 +7,7 @@ function CardLargeAccomodation({ studios }) {
   const [pricingValue, setPricingValue] = React.useState('all')
   const [genreValue, setGenreValue] = React.useState('all')
   const [townValue, setTownValue] = React.useState('all')
-  const [accomodationValue, setAccomodationValue] = React.useState('all')
+  const [accommodationValue, setAccommodationValue] = React.useState('all')
   const [state, setState] = React.useState(false)
 
   const handleClick = () => {
@@ -15,7 +15,7 @@ function CardLargeAccomodation({ studios }) {
     setPricingValue('all')
     setGenreValue('all')
     setTownValue('all')
-    setAccomodationValue('not all')
+    setAccommodationValue('not all')
     setState(true)
   }
 
@@ -46,7 +46,7 @@ function CardLargeAccomodation({ studios }) {
                       pricingValue: { pricingValue },
                       genreValue: { genreValue },
                       townValue: { townValue },
-                      accomodationValue: { accomodationValue },
+                      accommodationValue: { accommodationValue },
                       studios: { studios },
                     },
                   }}

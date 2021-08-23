@@ -5,6 +5,9 @@ import NavigationBar from './components/common/NavigationBar'
 import Footer from './components/common/Footer'
 import Home from './components/common/Home'
 import Filter from './components/studios/studiosOther/Filter'
+import Login from './components/auth/Login'
+import Register from './components/auth/Register'
+import Terms from './components/common/Terms'
 
 function App() {
 
@@ -16,7 +19,6 @@ function App() {
   //   getData()
   // })
 
-
   return (
     <BrowserRouter>
       <NavigationBar />
@@ -24,6 +26,9 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/studios" component={Filter} />
         <Route />
+        <Route path="/login" component={Login} />
+        <Route path="/registration" component={Register} />
+        <Route path="/terms" component={Terms} />
       </Switch>
       <Footer />
     </BrowserRouter>

@@ -7,7 +7,7 @@ function Search({ studios }) {
   const [pricingValue, setPricingValue] = React.useState('all')
   const [genreValue, setGenreValue] = React.useState('all')
   const [townValue, setTownValue] = React.useState('all')
-  const [accomodationValue, setAccomodationValue] = React.useState('all')
+  const [accommodationValue, setAccommodationValue] = React.useState('all')
   const [state, setState] = React.useState(false)
 
   const handleSubmit = e => {
@@ -17,7 +17,7 @@ function Search({ studios }) {
 
   const handleContinentChange = e => {
     setTownValue('all')
-    setAccomodationValue('all')
+    setAccommodationValue('all')
     setContinentValue(e.target.value)
   }
 
@@ -74,7 +74,7 @@ function Search({ studios }) {
                   pricingValue: { pricingValue },
                   genreValue: { genreValue },
                   townValue: { townValue },
-                  accomodationValue: { accomodationValue },
+                  accommodationValue: { accommodationValue },
                   studios: { studios },
                 },
               }}
