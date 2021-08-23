@@ -4,6 +4,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import NavigationBar from './components/common/NavigationBar'
 import Footer from './components/common/Footer'
 import Home from './components/common/Home'
+import Login from './components/auth/Login'
+import Register from './components/auth/Register'
+import Terms from './components/common/Terms'
 
 function App() {
 
@@ -15,13 +18,14 @@ function App() {
     getData()
   })
 
-
   return (
     <BrowserRouter>
       <NavigationBar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route />
+        <Route path="/login" component={Login} />
+        <Route path="/registration" component={Register} />
+        <Route path="/terms" component={Terms} />
       </Switch>
       <Footer />
     </BrowserRouter>

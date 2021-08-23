@@ -65,10 +65,11 @@ div.css-yk16xz-control{
   }
 }
 
-// Login
+// Login & Register
 
 .login, .register {
   height: 80vh;
+  min-height: 600px;
   background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -78,7 +79,9 @@ div.css-yk16xz-control{
     background-color: whitesmoke;
   }
   .form-vertical-align {
-    margin-top: 15vh;
+    margin-top: 10vh;
+    min-width: 375px;
+    max-width: 620px;
   }
 }
 
@@ -87,7 +90,18 @@ div.css-yk16xz-control{
 }
 
 .register {
+  min-height: 640px;
   background-image: url('https://res.cloudinary.com/dn11uqgux/image/upload/v1629408030/sei_project_3_studio_images/a_sharp1_idhzec.jpg');
+}
+
+.form-text {
+  color: red;
+}
+
+// Terms
+
+ul {
+  list-style: none;
 }
 
 .footer {
@@ -109,7 +123,19 @@ div.css-yk16xz-control{
   .made-by {
     font-size: small;
   }
+  .row {
+    margin: 0 auto;
+  }
 }
 
+@media only screen and (max-width: 575px) {
+
+  .footer {
+    .all {
+      margin: 0 auto;
+    }
+  }
+
+}
 
 @import "~bootstrap/scss/bootstrap"
