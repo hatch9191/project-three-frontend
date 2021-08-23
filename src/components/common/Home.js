@@ -30,14 +30,25 @@ function Home() {
   }, [])
 
   const browseAllStudios = () => {
-    //!Rand Num Generator
-    return studios.filter(studio => {
+    const rand = 1
+    const newArr = [...studios]
+    const resultArr = newArr.splice(rand, 3)
+    return resultArr.filter(studio => {
       return studio
     })
+
   }
 
   const noOfStudios = () => {
-    return studios.filter(studio => {
+    const newArr = [...studios]
+    const resultArr = newArr.filter(studio => {
+      if (studio.noOfStudios > 1) {
+        return studio
+      }
+    })
+    const newResultArr = resultArr.splice(0, 3)
+    console.log(newResultArr)
+    return newResultArr.filter(studio => {
       return studio
     })
   }

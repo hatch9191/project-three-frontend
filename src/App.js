@@ -8,6 +8,7 @@ import Filter from './components/studios/studiosOther/Filter'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Terms from './components/common/Terms'
+import StudioShow from './components/common/StudioShow'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
       <NavigationBar />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path="/studios/:studioId" component={StudioShow} />
         <Route path="/studios" component={Filter} />
         <Route path="/login" component={Login} />
         <Route path="/registration" component={Register} />

@@ -5,8 +5,62 @@
 }
 
 // ! EOIN
+.map-controller {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 220px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 0.8rem;
+  margin: 1rem;
+}
 
-.map-container {
+img.small-img{
+  width: 20rem;
+  border-radius: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+div.mapboxgl-popup-content{
+  padding: 0;
+  border-radius: 10px;
+
+}
+
+div.flexi-center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.mapboxgl-map{
+  border-radius: 5px;
+}
+
+// div.mapboxgl-popup.mapboxgl-popup-anchor-top{
+
+// }
+
+div.col-flexi{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker {
+  font-size: 20px;
+}
+
+.rocket {
+  display: block;
+  transform: translateX(-20px);
+}
+
+div.map-container {
   height: calc(100vh - 52px);
   width: 100%;
 }
@@ -50,6 +104,15 @@ div.css-yk16xz-control{
 div.white-bg{
   background-color: white;
   border-radius: 5px;
+}
+
+.float-right{
+    float: right;
+}
+
+#no-top{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 //! Card
@@ -104,6 +167,15 @@ img.height-100{
   align-items: center;
 }
 
+.card-body.center-card.smaller{
+  height: 4rem;
+}
+
+img.card-img-top.resize-img{
+  height: 25rem;
+}
+
+
 button.btn{
   color:white;
   filter: drop-shadow(0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.2));
@@ -114,8 +186,13 @@ button.btn{
 
 }
 
-button.btn:hover, .display-card:hover{
+.display-card:hover{
   transform: scale(1.01);
+}
+button.btn:hover{
+  transform: scale(1.01);
+  color: #fff;
+  font-weight: 400;
 }
 
 .flexi{
