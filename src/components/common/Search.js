@@ -6,6 +6,8 @@ function Search({ studios }) {
   const [continentValue, setContinentValue] = React.useState('all')
   const [pricingValue, setPricingValue] = React.useState('all')
   const [genreValue, setGenreValue] = React.useState('all')
+  const [townValue, setTownValue] = React.useState('all')
+  const [accomodationValue, setAccomodationValue] = React.useState('all')
   const [state, setState] = React.useState(false)
 
   const handleSubmit = e => {
@@ -14,6 +16,8 @@ function Search({ studios }) {
   }
 
   const handleContinentChange = e => {
+    setTownValue('all')
+    setAccomodationValue('all')
     setContinentValue(e.target.value)
   }
 
@@ -69,6 +73,8 @@ function Search({ studios }) {
                   continentValue: { continentValue },
                   pricingValue: { pricingValue },
                   genreValue: { genreValue },
+                  townValue: { townValue },
+                  accomodationValue: { accomodationValue },
                   studios: { studios },
                 },
               }}

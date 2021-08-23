@@ -3,14 +3,14 @@ import { Container } from 'react-bootstrap'
 
 import Search from './Search'
 import { getAllStudios } from '../../lib/api'
-import CardLargeTown from '../studios/studiosOther/CardLargeTown'
-import CardMedium from '../studios/studiosOther/CardMedium'
-import CardSmall from '../studios/studiosOther/CardSmall'
+import CardLargeTown from '../cards/CardLargeTown'
+import CardMedium from '../cards/CardMedium'
+import CardSmall from '../cards/CardSmall'
 import PromptCreateStudio from '../studios/studiosOther/PromptCreateStudio'
 import Sponsored from '../studios/studiosOther/Sponsored'
 import Loading from './Loading'
 import Error from './Error'
-import CardLargeAccomodation from '../studios/studiosOther/CardLargeAccomodation'
+import CardLargeAccomodation from '../cards/CardLargeAccomodation'
 
 function Home() {
   const [studios, setStudios] = React.useState(null)
@@ -29,13 +29,14 @@ function Home() {
     getData()
   }, [])
 
-  const showcaseStudios = () => {
+  const browseAllStudios = () => {
+    //!Rand Num Generator
     return studios.filter(studio => {
       return studio
     })
   }
 
-  const accomodationStudios = () => {
+  const noOfStudios = () => {
     return studios.filter(studio => {
       return studio
     })
@@ -56,12 +57,12 @@ function Home() {
       <div className="py-3"></div>
       <div className="px-4 py-4">
         <div className="container-sm py-4">
-          <h2 className="fs-1">Showcase Studios</h2>
+          <h2 className="fs-1">Browse All Studios</h2>
           <div className="row">
             {isError && <Error />}
             {loading && <Loading />}
             {studios &&
-              showcaseStudios().map(studio => (
+              browseAllStudios().map(studio => (
                 <CardSmall key={studio._id} studio={studio} />
               ))
             }
@@ -72,17 +73,17 @@ function Home() {
         <div className="container-sm py-4">
           {isError && <Error />}
           {loading && <Loading />}
-          {studios && <CardLargeTown />}
+          {studios && <CardLargeTown studios={studios} />}
         </div>
       </div>
       <div className="px-4 py-4">
         <div className="container-sm py-4">
-          <h2 className="fs-1">North Americas Best Studios</h2>
+          <h2 className="fs-1">Explore Our Largest Studio Complexes</h2>
           <div className="row">
             {isError && <Error />}
             {loading && <Loading />}
             {studios &&
-              accomodationStudios().map(studio => (
+              noOfStudios().map(studio => (
                 <CardMedium key={studio._id} studio={studio} />
               ))
             }
@@ -93,7 +94,7 @@ function Home() {
         <div className="container-sm py-4">
           {isError && <Error />}
           {loading && <Loading />}
-          {studios && <CardLargeAccomodation />}
+          {studios && <CardLargeAccomodation studios={studios} />}
         </div>
       </div>
       <div className="px-4">
