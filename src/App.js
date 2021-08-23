@@ -7,6 +7,7 @@ import Home from './components/common/Home'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Terms from './components/common/Terms'
+import Profile from './components/users/Profile'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/registration" component={Register} />
+        <Route path="/profile" component={Profile} />
         <Route path="/terms" component={Terms} />
       </Switch>
       <Footer />
