@@ -12,6 +12,7 @@ import Profile from './components/users/Profile'
 import EditUser from './components/users/EditUser'
 import { isAuthenticated } from './lib/auth'
 import StudioShow from './components/common/StudioShow'
+import BookingConfirmation from './components/studios/studiosOther/BookingConfirmation'
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
         <Route exact path="/">
           <Home setLoggedIn={setLoggedIn} />
         </Route>
+        <Route path="/studios/:studioId/bookings/:bookingId" component={BookingConfirmation} />
         <Route path="/studios/:studioId" component={StudioShow} />
         <Route path="/studios" component={Filter} />
         <Route path="/login" component={Login} />

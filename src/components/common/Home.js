@@ -50,7 +50,6 @@ function Home({ setLoggedIn }) {
       }
     })
     const newResultArr = resultArr.splice(0, 3)
-    console.log(newResultArr)
     return newResultArr.filter(studio => {
       return studio
     })

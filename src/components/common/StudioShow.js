@@ -9,6 +9,8 @@ import ExtraImagesCard from '../studios/studiosOther/ExtraImagesCard'
 import { isOwner, isAuthenticated } from '../../lib/auth'
 import ClientCard from '../studios/studiosOther/ClientCard'
 import BookingCard from '../cards/BookingCard'
+import CommentSection from '../comments/CommentSection'
+import ShowPageMap from '../studios/studiosOther/ShowPageMap'
 // import StudioInformationCard from '../studios/studiosOther/StudioInformationCard'
 
 
@@ -25,7 +27,6 @@ function StudioShow() {
       try {
         const res = await getSingleStudio(studioId)
         setStudio(res.data)
-        console.log(res.data)
       } catch (err) {
         console.log(err)
         setIsError(true)
@@ -113,7 +114,7 @@ function StudioShow() {
                     <p className="fw-bold pt-3">Genres:
                       {studio.genres.map(genre => (
                         <>
-                          <br /><span className="fw-normal">{genre}</span>
+                          <br key={genre} /><span className="fw-normal">{genre}</span>
                         </>
                       ))}
                     </p>
@@ -136,7 +137,7 @@ function StudioShow() {
               <div className="py-3"></div>
               {isOwner() ?
                 <>
-                  <div>
+                  <div key={studio._id}>
                     <button type="button" className="btn btn-info px-5 mx-3">Update Studio</button>
                     <button type="button" className="btn btn-danger px-5 mx-3">Delete Studio</button>
                   </div>
@@ -171,15 +172,21 @@ function StudioShow() {
 
 
           <div className="py-3"></div>
-          {!isAuthenticated() ?
+          {isAuthenticated() ?
             <div className="px-4 py-4">
               <div className="container-sm py-4">
-                <BookingCard />
+                <BookingCard studio={studio} />
               </div>
             </div>
             :
             ''
           }
+          <div className="py-3"></div>
+          {(
+            <CommentSection studio={studio} setStudio={setStudio} />
+          )}
+          <div className="py-3"></div>
+          {<ShowPageMap studio={studio} />}
 
         </>
       )}

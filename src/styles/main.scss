@@ -24,6 +24,10 @@ img.small-img{
   border-bottom-left-radius: 0;
 }
 
+.small-img{
+  width: 5px;
+}
+
 div.mapboxgl-popup-content{
   padding: 0;
   border-radius: 10px;
@@ -40,6 +44,9 @@ div.mapboxgl-map{
   border-radius: 5px;
 }
 
+div.make-smaller{
+  height: 20rem;
+}
 // div.mapboxgl-popup.mapboxgl-popup-anchor-top{
 
 // }
@@ -177,7 +184,7 @@ img.height-100{
 }
 
 img.card-img-top.resize-img{
-  height: 25rem;
+  height: 20rem;
 }
 
 
@@ -234,6 +241,10 @@ button.full-height{
 .mb-3.px-1.py-3.white-bg.row{
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+}
+
+.date-picker::-webkit-input-placeholder {
+  text-align: center;
 }
 
 // ! CHRISTIAN
