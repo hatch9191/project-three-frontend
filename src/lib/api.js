@@ -68,3 +68,7 @@ export function studioFavourited(studioId) {
 export function profileUser() {
   return axios.get('/api/profile', headers())
 }
+
+export function editUser(userId, formData) {
+  return axios.put(`/api/profile/${userId}`, formData, headers())
+}

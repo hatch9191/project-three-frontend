@@ -1,6 +1,18 @@
+import React from 'react'
 import { Container, Navbar, Nav, Button } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom'
 
-function NavigationBar() {
+import { removeToken } from '../../lib/auth'
+
+function NavigationBar({ loggedIn }) {
+
+  const history = useHistory()
+
+  const handleLogout = () => {
+    removeToken()
+    history.push('/')
+  }
+
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
@@ -17,10 +29,19 @@ function NavigationBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav className="links">
-            <Nav.Link href="/">Favorites<Button variant="secondary">0</Button></Nav.Link>
-            <Nav.Link href="/">Cart<Button variant="secondary">0</Button></Nav.Link>
-            <Nav.Link href="/login" className="no-button">Login</Nav.Link>
-            <Nav.Link href="/registration" className="no-button">Register</Nav.Link>
+            {loggedIn && (
+              <>
+                <Nav.Link href="/">Favorites<Button variant="secondary">0</Button></Nav.Link>
+                <Nav.Link href="/profile" className="no-button">Profile</Nav.Link>
+                <Nav.Link href="/"><Button variant="secondary" onClick={handleLogout}>Log Out</Button></Nav.Link>
+              </>
+            )}
+            {!loggedIn && (
+              <>
+                <Nav.Link href="/login" className="no-button">Login</Nav.Link>
+                <Nav.Link href="/registration" className="no-button">Register</Nav.Link>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
