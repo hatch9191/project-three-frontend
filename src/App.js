@@ -14,6 +14,7 @@ import Profile from './components/users/Profile'
 import EditUser from './components/users/EditUser'
 import { isAuthenticated } from './lib/auth'
 import StudioShow from './components/common/StudioShow'
+import Cookies from './components/common/Cookies'
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="/registration" component={Register} />
         <Route path="/profile/:userId" component={EditUser} />
         <Route path="/profile" component={Profile} />
+        <Route path="/cookies" component={Cookies} />
         <Route path="/terms" component={Terms} />
       </Switch>
       <Footer />

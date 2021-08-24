@@ -113,6 +113,7 @@ function EditUser() {
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicAvatar">
                 <Form.Label>Avatar</Form.Label>
+
                 <Form.Control 
                   type="text" 
                   placeholder="Insert ImageURL"
