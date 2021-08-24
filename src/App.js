@@ -11,6 +11,7 @@ import Terms from './components/common/Terms'
 import Profile from './components/users/Profile'
 import EditUser from './components/users/EditUser'
 import { isAuthenticated } from './lib/auth'
+import StudioShow from './components/common/StudioShow'
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
         <Route exact path="/">
           <Home setLoggedIn={setLoggedIn} />
         </Route>
+        <Route path="/studios/:studioId" component={StudioShow} />
         <Route path="/studios" component={Filter} />
         <Route path="/login" component={Login} />
         <Route path="/registration" component={Register} />

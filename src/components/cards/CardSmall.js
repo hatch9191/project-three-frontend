@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 function CardSmall({ studio }) {
   return (
     <div className="col-sm-4 card-shadow">
-      <Link className="card-profile-link"  exact to={`/studios/${studio._id}`}>
+      <Link className="card-profile-link" exact to={`/studios/${studio._id}`}>
         <div
           className="card display-card "
           style={{
