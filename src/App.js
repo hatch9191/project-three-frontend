@@ -4,6 +4,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import NavigationBar from './components/common/NavigationBar'
 import Footer from './components/common/Footer'
 import Home from './components/common/Home'
+import CreateStudio from './components/studios/CreateStudio'
+import EditStudio from './components/studios/EditStudio'
 
 function App() {
 
