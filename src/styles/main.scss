@@ -53,6 +53,11 @@ div.white-bg{
 }
 
 //! Card
+
+.card-profile-link {
+  text-decoration: none;
+}
+
 div.display-card{
   // width: 20rem;
   height: 16rem;
@@ -216,6 +221,27 @@ button.full-height{
 .form-text {
   color: red;
 }
+
+// Profile
+
+.profile-page {
+  .list {
+    margin-bottom: 0;
+  }
+  .btn {
+    margin: 10px;
+    width: 251px;
+  }
+  .avatar {
+    border-radius: 5px;
+  }
+  // .go-right {
+  //   display: flex;
+  //   flex-direction: row;
+  //   flex-wrap: wrap;
+  // }
+}
+
 
 // Terms
 

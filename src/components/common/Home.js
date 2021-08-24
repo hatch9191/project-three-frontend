@@ -11,11 +11,14 @@ import Sponsored from '../studios/studiosOther/Sponsored'
 import Loading from './Loading'
 import Error from './Error'
 import CardLargeAccomodation from '../cards/CardLargeAccomodation'
+import { isAuthenticated } from '../../lib/auth'
 
-function Home() {
+function Home({ setLoggedIn }) {
   const [studios, setStudios] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
   const loading = !studios && !isError
+
+  setLoggedIn(isAuthenticated())
 
   React.useEffect(() => {
     const getData = async () => {

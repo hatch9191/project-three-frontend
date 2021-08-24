@@ -9,6 +9,8 @@ import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Terms from './components/common/Terms'
 import Profile from './components/users/Profile'
+import EditUser from './components/users/EditUser'
+import { isAuthenticated } from './lib/auth'
 
 function App() {
 
@@ -20,14 +22,20 @@ function App() {
   //   getData()
   // })
 
+  const [loggedIn, setLoggedIn] = React.useState(isAuthenticated())
+
+
   return (
     <BrowserRouter>
-      <NavigationBar />
+      <NavigationBar loggedIn={loggedIn} />
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/">
+          <Home setLoggedIn={setLoggedIn} />
+        </Route>
         <Route path="/studios" component={Filter} />
         <Route path="/login" component={Login} />
         <Route path="/registration" component={Register} />
+        <Route path="/profile/:userId" component={EditUser} />
         <Route path="/profile" component={Profile} />
         <Route path="/terms" component={Terms} />
       </Switch>

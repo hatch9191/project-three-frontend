@@ -2,12 +2,11 @@ import React from 'react'
 import { Container, Navbar, Nav, Button } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 
-import { isAuthenticated, removeToken } from '../../lib/auth'
+import { removeToken } from '../../lib/auth'
 
-function NavigationBar() {
+function NavigationBar({ loggedIn }) {
 
   const history = useHistory()
-  const isAuth = isAuthenticated()
 
   const handleLogout = () => {
     removeToken()
@@ -30,14 +29,14 @@ function NavigationBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav className="links">
-            {isAuth && (
+            {loggedIn && (
               <>
                 <Nav.Link href="/">Favorites<Button variant="secondary">0</Button></Nav.Link>
                 <Nav.Link href="/profile" className="no-button">Profile</Nav.Link>
                 <Nav.Link href="/"><Button variant="secondary" onClick={handleLogout}>Log Out</Button></Nav.Link>
               </>
             )}
-            {!isAuth && (
+            {!loggedIn && (
               <>
                 <Nav.Link href="/login" className="no-button">Login</Nav.Link>
                 <Nav.Link href="/registration" className="no-button">Register</Nav.Link>
