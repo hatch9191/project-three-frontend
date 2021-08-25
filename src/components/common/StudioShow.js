@@ -9,32 +9,49 @@ import ExtraImagesCard from '../studios/studiosOther/ExtraImagesCard'
 import { isOwner, isAuthenticated } from '../../lib/auth'
 import ClientCard from '../studios/studiosOther/ClientCard'
 import BookingCard from '../cards/BookingCard'
+import CommentSection from '../comments/CommentSection'
+import ShowPageMap from '../studios/studiosOther/ShowPageMap'
+import { studioFavourited } from '../../lib/api'
 // import StudioInformationCard from '../studios/studiosOther/StudioInformationCard'
+import { profileUser } from '../../lib/api'
 
 
-
-function StudioShow() {
+function StudioShow({ loggedIn, user, setUser }) {
   const { studioId } = useParams()
   const [studio, setStudio] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
   const isLoading = !studio && !isError
 
-
   React.useEffect(() => {
     const getData = async () => {
       try {
+        if (loggedIn) {
+          const response = await profileUser(user._id)
+          setUser(response.data)
+        }
         const res = await getSingleStudio(studioId)
         setStudio(res.data)
-        console.log(res.data)
       } catch (err) {
         console.log(err)
         setIsError(true)
       }
     }
     getData()
-  }, [studioId])
+  }, [studioId, user._id, setUser, loggedIn])
 
-
+  const handleFavourite = async () => {
+    try {
+      const res = await studioFavourited(studioId)
+      console.log(res)
+      const studioResponse = await getSingleStudio(studioId)
+      setStudio(studioResponse.data)
+      const profileResponse = await profileUser(user._id)
+      setUser(profileResponse.data)
+    } catch (err) {
+      console.log(err)
+      setIsError(true)
+    }
+  }
 
   return (
     <>
@@ -57,9 +74,22 @@ function StudioShow() {
               <div className=" px-3 py-5">
                 <h1 className="display-5 fw-bold">{studio.name}</h1>
                 <Button
-                  className=" full-height"
+                  className="full-height"
                   variant="info"
                   type="submit">Book This Studio Now</Button>
+                <br />
+                {!studio.favouritedBy.some(favourite => favourite._id === user._id) && loggedIn && (
+                  <Button
+                    className="full-height fav-btn"
+                    variant="dark"
+                    onClick={handleFavourite}>🤍 Add To Favourites</Button>
+                )}
+                {studio.favouritedBy.some(favourite => favourite._id === user._id) && loggedIn && (
+                  <Button
+                    className="full-height fav-btn"
+                    variant="secondary"
+                    onClick={handleFavourite}>♥️ Favourited</Button>
+                )}
               </div>
             </div >
           </Container >
@@ -98,7 +128,12 @@ function StudioShow() {
                     </p>
                   </div>
                   <div className="list-group-item">
-                    <p className="fw-bold pt-3">Description: <br /> <span className="fw-normal">{studio.description}</span></p>
+                    <p className="fw-bold pt-3">Description: </p>
+                    {studio.description.map(para => (
+                      <>
+                        <p key={para} className="fw-normal">{para}</p>
+                      </>
+                    ))}
                   </div>
                   <div className="list-group-item">
                     <p className="fw-bold pt-3">Equipment:
@@ -113,7 +148,7 @@ function StudioShow() {
                     <p className="fw-bold pt-3">Genres:
                       {studio.genres.map(genre => (
                         <>
-                          <br /><span className="fw-normal">{genre}</span>
+                          <br key={genre} /><span className="fw-normal">{genre}</span>
                         </>
                       ))}
                     </p>
@@ -136,7 +171,7 @@ function StudioShow() {
               <div className="py-3"></div>
               {isOwner() ?
                 <>
-                  <div>
+                  <div key={studio._id}>
                     <button type="button" className="btn btn-info px-5 mx-3">Update Studio</button>
                     <button type="button" className="btn btn-danger px-5 mx-3">Delete Studio</button>
                   </div>
@@ -167,15 +202,21 @@ function StudioShow() {
 
 
           <div className="py-3"></div>
-          {!isAuthenticated() ?
+          {isAuthenticated() ?
             <div className="px-4 py-4">
               <div className="container-sm py-4">
-                <BookingCard />
+                <BookingCard studio={studio} />
               </div>
             </div>
             :
             ''
           }
+          <div className="py-3"></div>
+          {(
+            <CommentSection studio={studio} setStudio={setStudio} />
+          )}
+          <div className="py-3"></div>
+          {<ShowPageMap studio={studio} />}
 
         </>
       )}

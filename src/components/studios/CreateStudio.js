@@ -491,6 +491,7 @@ function CreateStudio() {
       </div>
     </Container>
   )
+  
 }
 
 export default CreateStudio

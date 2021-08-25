@@ -1,6 +1,6 @@
 import React from 'react'
-import { useParams, Link, useHistory } from 'react-router-dom'
-import { ListGroup, Modal } from 'react-bootstrap'
+import { useParams, Link, useHistory, Redirect } from 'react-router-dom'
+import { ListGroup, Modal, Button } from 'react-bootstrap'
 
 import { profileUser, editUser } from '../../lib/api'
 import CardSmall from '../cards/CardSmall'
@@ -8,10 +8,10 @@ import Error from '../common/Error'
 import Loading from '../common/Loading'
 import { removeToken } from '../../lib/auth'
 
-function Profile() {
+function Profile({ user, setUser }) {
 
-  const initialState = { 
-    username: '', 
+  const initialState = {
+    username: '',
     email: '',
     password: '',
     passwordConfirmation: '',
@@ -22,19 +22,20 @@ function Profile() {
 
   const { userId } = useParams()
   const history = useHistory()
-  const [user, setUser] = React.useState(initialState)
   const [isError, setIsError] = React.useState(false)
   const isLoading = !user && !isError
   const [modalShow, setModalShow] = React.useState(false)
   const [deactivateData, setDeactivateData] = React.useState(initialState)
+
+  const [state, setState] = React.useState(false)
 
   React.useEffect(() => {
     const getData = async () => {
       try {
         const response = await profileUser(userId)
         setUser(response.data)
-        setDeactivateData({ 
-          username: `deactivatedUser${user._id}`, 
+        setDeactivateData({
+          username: `deactivatedUser${user._id}`,
           email: `deactivatedUser${user._id}@email.com`,
           password: 'recoveryPassword',
           passwordConfirmation: 'recoveryPassword',
@@ -46,7 +47,9 @@ function Profile() {
       }
     }
     getData()
-  }, [userId, user._id])
+  }, [userId, user._id, setUser])
+
+  
 
   const handleDeactivate = async () => {
     try {
@@ -61,6 +64,7 @@ function Profile() {
 
   const DeactivateModal = (props) => {
     return (
+      
       <Modal
         {...props}
         size="lg"
@@ -69,7 +73,7 @@ function Profile() {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-          Final Warning!
+            Final Warning!
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -84,10 +88,18 @@ function Profile() {
     )
   }
 
+
+  const handleShowBookings = () => {
+    setState(true)
+  }
+
   console.log(user)
+  
 
   return (
+    
     <>
+    
       {isError && <Error />}
       {isLoading && <Loading />}
       {!isError && !isLoading && (
@@ -97,7 +109,7 @@ function Profile() {
             <div className="px-4 py-2">
               <div className="container-sm py-4">
                 <h2 className="fs-2">My Booked Studios</h2>
-                {!user.bookedStudio.length && 
+                {!user.bookedStudio.length &&
                   <ListGroup as="ul">
                     <ListGroup.Item as="li">
                       You have not booked any Studios yets...<br />
@@ -108,16 +120,31 @@ function Profile() {
                   </ListGroup>
                 }
                 {user.bookedStudio && (
+
                   user.bookedStudio.map(studio => (
                     <CardSmall key={studio._id} studio={studio} />
                   ))
+
+                )}
+                {user.bookedStudio && <Button onClick={handleShowBookings}>Your Bookings</Button>}
+                {state && (
+                  <Redirect
+                    push
+                    to={{
+                      pathname: `/profile/${user._id}/bookings`,
+                      state: {
+                        user: { user },
+                      },
+                    }}
+                  >
+                  </Redirect>
                 )}
               </div>
             </div>
             <div className="px-4 py-2">
               <div className="container-sm py-4">
                 <h2 className="fs-2">My Favorite Studios</h2>
-                {!user.favouritedStudio.length && 
+                {!user.favouritedStudio.length &&
                   <ListGroup as="ul">
                     <ListGroup.Item as="li">
                       You have not liked any Studios yets...<br />
@@ -201,9 +228,9 @@ function Profile() {
             <div className="py-4"></div>
           </div>
         </>
-    
-    
-    
+
+
+
       )}
     </>
   )

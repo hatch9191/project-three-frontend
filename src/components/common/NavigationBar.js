@@ -1,10 +1,10 @@
 import React from 'react'
-import { Container, Navbar, Nav, Button } from 'react-bootstrap'
+import { Container, Navbar, Nav, Button, Badge } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 
 import { removeToken } from '../../lib/auth'
 
-function NavigationBar({ loggedIn }) {
+function NavigationBar({ loggedIn, user }) {
 
   const history = useHistory()
 
@@ -31,7 +31,8 @@ function NavigationBar({ loggedIn }) {
           <Nav className="links">
             {loggedIn && (
               <>
-                <Nav.Link href="/">Favorites<Button variant="secondary">0</Button></Nav.Link>
+                <Navbar.Text className="text-info no-button username">Welcome, {user.username}!</Navbar.Text>
+                <Navbar.Text className="no-button" href="">Favourites<Badge pill className="counter" bg="info">{user.favouritedStudio.length}</Badge></Navbar.Text>
                 <Nav.Link href="/profile" className="no-button">Profile</Nav.Link>
                 <Nav.Link href="/"><Button variant="secondary" onClick={handleLogout}>Log Out</Button></Nav.Link>
               </>

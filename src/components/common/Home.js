@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
+import { useParams } from 'react-router'
 
 import Search from './Search'
 import { getAllStudios } from '../../lib/api'
@@ -12,17 +13,23 @@ import Loading from './Loading'
 import Error from './Error'
 import CardLargeAccomodation from '../cards/CardLargeAccomodation'
 import { isAuthenticated } from '../../lib/auth'
+import { profileUser } from '../../lib/api'
 
-function Home({ setLoggedIn }) {
+function Home({ loggedIn, setLoggedIn, setUser }) {
+
   const [studios, setStudios] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
   const loading = !studios && !isError
-
+  const { userId } = useParams()
   setLoggedIn(isAuthenticated())
 
   React.useEffect(() => {
     const getData = async () => {
       try {
+        if (loggedIn) {
+          const response = await profileUser(userId)
+          setUser(response.data)
+        }
         const res = await getAllStudios()
         setStudios(res.data)
       } catch (err) {
@@ -30,8 +37,24 @@ function Home({ setLoggedIn }) {
       }
     }
     getData()
-  }, [])
+  }, [loggedIn, userId, setUser])
 
+  
+  // React.useEffect(() => {
+  //   if (loggedIn) {
+  //     const getData = async () => {
+  //       try {
+  //         const response = await profileUser(userId)
+  //         setUser(response.data)
+  //       } catch (err) {
+  //         console.log(err)
+  //         setIsError(true)
+  //       }
+  //     }
+  //     getData()
+  //   }
+  // }, [loggedIn, userId, setUser])
+  
   const browseAllStudios = () => {
     const rand = 1
     const newArr = [...studios]
@@ -39,7 +62,6 @@ function Home({ setLoggedIn }) {
     return resultArr.filter(studio => {
       return studio
     })
-
   }
 
   const noOfStudios = () => {
@@ -50,7 +72,6 @@ function Home({ setLoggedIn }) {
       }
     })
     const newResultArr = resultArr.splice(0, 3)
-    console.log(newResultArr)
     return newResultArr.filter(studio => {
       return studio
     })
