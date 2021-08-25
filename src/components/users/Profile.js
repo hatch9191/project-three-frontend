@@ -49,7 +49,7 @@ function Profile({ user, setUser }) {
     getData()
   }, [userId, user._id, setUser])
 
-  
+
 
   const handleDeactivate = async () => {
     try {
@@ -64,7 +64,7 @@ function Profile({ user, setUser }) {
 
   const DeactivateModal = (props) => {
     return (
-      
+
       <Modal
         {...props}
         size="lg"
@@ -76,8 +76,8 @@ function Profile({ user, setUser }) {
             Final Warning!
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <p>
+        <Modal.Body className="flexi-center">
+          <p className="text-center center-text">
             Please be warned that clicking the below deactivate button <strong>will remove your account from our site</strong>. Some data <strong>may be lost or unrecoverable</strong> once your account is deactivated. By clicking the through you confirm you have understood the above.
           </p>
         </Modal.Body>
@@ -94,12 +94,12 @@ function Profile({ user, setUser }) {
   }
 
   console.log(user)
-  
+
 
   return (
-    
+
     <>
-    
+
       {isError && <Error />}
       {isLoading && <Loading />}
       {!isError && !isLoading && (
@@ -108,25 +108,27 @@ function Profile({ user, setUser }) {
             <div className="py-4"></div>
             <div className="px-4 py-2">
               <div className="container-sm py-4">
-                <h2 className="fs-2">My Booked Studios</h2>
-                {!user.bookedStudio.length &&
-                  <ListGroup as="ul">
-                    <ListGroup.Item as="li">
-                      You have not booked any Studios yets...<br />
+                <h2 className="fs-2">Your Booked Studios</h2>
+                <div className="row">
+                  {!user.bookedStudio.length &&
+                    <>
+                      <ListGroup as="ul">
+                        <ListGroup.Item as="li">
+                          You have not booked any Studios yets...<br />
+                        </ListGroup.Item>
+                      </ListGroup>
                       <Link to="/" className="profile-link">
                         <button type="button" className="btn btn-info px-5">Book a Studio</button>
                       </Link>
-                    </ListGroup.Item>
-                  </ListGroup>
-                }
-                {user.bookedStudio && (
-
-                  user.bookedStudio.map(studio => (
-                    <CardSmall key={studio._id} studio={studio} />
-                  ))
-
-                )}
-                {user.bookedStudio && <Button onClick={handleShowBookings}>Your Bookings</Button>}
+                    </>
+                  }
+                  {user.bookedStudio && (
+                    user.bookedStudio.map(studio => (
+                      <CardSmall key={studio._id} studio={studio} />
+                    ))
+                  )}
+                </div>
+                {!(user.bookedStudio.length < 1) && <Button className="btn btn-info px-5" onClick={handleShowBookings}>View Your Bookings</Button>}
                 {state && (
                   <Redirect
                     push
@@ -143,22 +145,25 @@ function Profile({ user, setUser }) {
             </div>
             <div className="px-4 py-2">
               <div className="container-sm py-4">
-                <h2 className="fs-2">My Favorite Studios</h2>
-                {!user.favouritedStudio.length &&
-                  <ListGroup as="ul">
-                    <ListGroup.Item as="li">
-                      You have not liked any Studios yets...<br />
-                      <Link to="/" className="profile-link">
-                        <button type="button" className="btn btn-info px-5">Browse Studios</button>
-                      </Link>
-                    </ListGroup.Item>
-                  </ListGroup>
-                }
-                {user.favouritedStudio && (
-                  user.favouritedStudio.map(studio => (
-                    <CardSmall key={studio._id} studio={studio} />
-                  ))
-                )}
+                <h2 className="fs-2">Your Favorite Studios</h2>
+                <div className="row">
+
+                  {!user.favouritedStudio.length &&
+                    <ListGroup as="ul">
+                      <ListGroup.Item as="li">
+                        You have not liked any Studios yets...<br />
+                        <Link to="/" className="profile-link">
+                          <button type="button" className="btn btn-info px-5">Browse Studios</button>
+                        </Link>
+                      </ListGroup.Item>
+                    </ListGroup>
+                  }
+                  {user.favouritedStudio && (
+                    user.favouritedStudio.map(studio => (
+                      <CardSmall key={studio._id} studio={studio} />
+                    ))
+                  )}
+                </div>
               </div>
             </div>
             <div className="px-4 py-2">
@@ -166,7 +171,7 @@ function Profile({ user, setUser }) {
                 <h2 className="fs-2 pb-1">Personal Information</h2>
                 <ListGroup as="ul">
                   <ListGroup.Item as="li">
-                    <strong>Avatar:</strong><br /> {!user.avatar && <p className="text-muted list">Please add &apos;Avatar&apos; image by clicking the Edit button below</p>}
+                    <strong className="fw-bold bold">Avatar:</strong><br /> {!user.avatar && <p className="text-muted list">Please add &apos;Avatar&apos; image by clicking the Edit button below</p>}
                     {user.avatar && <img src={user.avatar} height="100" width="100" className="avatar" />}
                   </ListGroup.Item>
                   <ListGroup.Item as="li">
@@ -180,16 +185,17 @@ function Profile({ user, setUser }) {
                   </ListGroup.Item>
                   <ListGroup.Item as="li">
                     <strong>E-mail:</strong><br /> {user.email}<br />
-                    <Link to={`/profile/${user._id}`} className="profile-link">
-                      <button type="button" className="btn btn-info px-5">Edit My Information</button>
-                    </Link>
+
                   </ListGroup.Item>
                 </ListGroup>
+                <Link to={`/profile/${user._id}`} className="profile-link">
+                  <button type="button" className="btn btn-info px-5">Edit</button>
+                </Link>
               </div>
             </div>
             <div className="px-4 py-2">
               <div className="container-sm py-4 go-right">
-                <h2 className="fs-2">My Studios</h2>
+                <h2 className="fs-2">Your Studios</h2>
                 <div className="row">
                   {user.addedStudio && (
                     user.addedStudio.map(studio => (
@@ -198,14 +204,17 @@ function Profile({ user, setUser }) {
                   )}
                 </div>
                 {!user.addedStudio.length && (
-                  <ListGroup as="ul">
-                    <ListGroup.Item as="li">
-                      You have not listed any Studios yets... <br />
-                      <Link to="/studios/new" className="profile-link">
-                        <button type="button" className="btn btn-info px-5">List Your Studio</button>
-                      </Link>
-                    </ListGroup.Item>
-                  </ListGroup>
+                  <>
+                    <ListGroup as="ul">
+                      <ListGroup.Item as="li">
+                        You have not listed any Studios yets... <br />
+
+                      </ListGroup.Item>
+                    </ListGroup>
+                    <Link to="/studios/new" className="profile-link">
+                      <button type="button" className="btn btn-info px-5">List Your Studio</button>
+                    </Link>
+                  </>
                 )}
               </div>
             </div>
@@ -216,13 +225,14 @@ function Profile({ user, setUser }) {
                   <ListGroup.Item as="li">
                     <strong>Deactivate Your Account</strong> <br />
                     Once you deactivate you will need to contact the site administrator by email to recover your account.<br />
-                    <button type="button" className="btn btn-danger px-5" onClick={() => setModalShow(true)}>Deactivate</button>
                     <DeactivateModal
                       show={modalShow}
                       onHide={() => setModalShow(false)}
                     />
                   </ListGroup.Item>
                 </ListGroup>
+                <button type="button" className="btn btn-danger px-5" onClick={() => setModalShow(true)}>Deactivate Account</button>
+
               </div>
             </div>
             <div className="py-4"></div>

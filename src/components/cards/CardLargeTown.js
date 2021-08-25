@@ -30,8 +30,8 @@ function CardLargeTown({ studios }) {
           </div>
           <div className="col-md-8">
             <div className="card-body middle-card">
-              <h5 className="card-title fs-4">Card title</h5>
-              <p className="card-text center-text">This is a wider card with supporting text more text herr to builf it out a bit and make it look better below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <h5 className="card-title fs-4">Find The Perfect Studio</h5>
+              <p className="card-text center-text">London’s up and coming music scene is incredibly vibrant and exciting. From electronic to techno, pop to drum and bass, new music emerges every day from London’s recording studios, which are located throughout the city.</p>
               {state ?
                 <Redirect
                   push

@@ -55,23 +55,30 @@ function StudioShow({ loggedIn, user, setUser }) {
 
   return (
     <>
-      <div className="py-4"></div>
       {isError && <div className="px-4 py-5 text-center"><Error /></div>}
       {isLoading && <div className="px-4 py-5 text-center"><Loading /></div>}
       {studio && (
         <>
           <Container
-            fluid className="no-pad test-class"
+            fluid className="no-pad parallax"
             style={{
               background: `linear-gradient(rgba(0,0,0,.05), rgba(0,0,0,.05)), url(${studio.mainImage})`,
+              height: '70vh',
+
               backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              backgroundPosition: 'bottom',
               filter: 'drop-shadow(0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.2))',
+              backgroundAttachment: 'fixed',
+              backgroundRepeat: 'no-repeat',
+
             }}
 
           >
             < div className="px-4 py-5 text-center" >
               <div className=" px-3 py-5">
+                <div className="pt-4"></div>
+                <div className="pt-4"></div>
+
                 <h1 className="display-5 fw-bold">{studio.name}</h1>
                 <Button
                   className="full-height"
@@ -193,7 +200,7 @@ function StudioShow({ loggedIn, user, setUser }) {
               <div className="row">
                 <ClientCard key={studio.previousClientsOne._id} client={studio.previousClientsOne} />
                 {studio.previousClientsTwo &&
-                <ClientCard key={studio.previousClientsTwo._id} client={studio.previousClientsTwo} />
+                  <ClientCard key={studio.previousClientsTwo._id} client={studio.previousClientsTwo} />
                 }
               </div>
             </div>

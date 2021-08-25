@@ -39,9 +39,9 @@ function UserBookings({ location }) {
             Final Warning!
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <p>
-            Please be warned that clicking the below deactivate button <strong>will remove your account from our site</strong>. Some data <strong>may be lost or unrecoverable</strong> once your account is deactivated. By clicking the through you confirm you have understood the above.
+        <Modal.Body className="flexi-center">
+          <p className="text-center center-text">
+            Please be warned that clicking the below Cancel button <strong>will remove your booking from our site</strong>. All data <strong>will be unrecoverable</strong> once your booking is canceled. By clicking the through you confirm you have understood the above.
           </p>
         </Modal.Body>
         <Modal.Footer>

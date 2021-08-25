@@ -1,11 +1,15 @@
 import React from 'react'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import { Form } from 'react-bootstrap'
+// import { Link, useHistory } from 'react-router-dom'
 
 import CardSmall from '../../cards/CardSmall'
 
 function Filter({ location }) {
+  // const history = useHistory()
   const [searchValue, setSearchValue] = React.useState('')
+  // const [lookUp, setLookUp] = React.useState(null)
+  // const [state, setState] = React.useState(false)
 
   const [viewport, setViewport] = React.useState({
     latitude: 51.0,
@@ -48,6 +52,14 @@ function Filter({ location }) {
                 </Form.Text>
               </Form.Group>
             </Form>
+            {filterStudios().length < 1 && (
+              <div className="flexi-center">
+                <img src="https://res.cloudinary.com/dk0r9bcxy/image/upload/v1629932250/project-image-upload-test/d64b1bc4087cbf2c574a1688ecabc8ee_qc6h1m.webp"></img>
+                <p className="text-center fs-5"> Sorry, we could not find any studios matching your criteria.<br></br>
+                  <small>You can try to zoom out on the map, change some filters, or clear all filters.</small> </p>
+              </div>
+            )}
+
             <div className="row">
               {/* <h2 className="fs-1">Your Search Results</h2> */}
               {filterStudios().map(studio => (
@@ -55,10 +67,11 @@ function Filter({ location }) {
                   <CardSmall key={studio._id} studio={studio} />
                 </>
               ))}
-            </div>
-          </div>
 
-          <div className="col mt-4 flexi-center">
+            </div>
+
+          </div>
+          <div className=" col-sm-6 mt-4 flexi-center">
             {/* <h2 className="fs-1">Map Goes Here</h2> */}
             <div className="map-container rounded">
               <ReactMapGL
@@ -84,7 +97,7 @@ function Filter({ location }) {
                         onClick={() => setPopup(studio)}
                       >
                         📍
-                        {console.log(popup)}
+                        {/* {console.log(popup)} */}
                       </span>
                     </Marker>
                   </>
@@ -97,8 +110,11 @@ function Filter({ location }) {
                     longitude={popup.location.latitude}
                     latitude={popup.location.longitude}
                   >
+
+                    {console.log(popup._id)}
                     <img key={popup._id} className="small-img" src={popup.mainImage}></img>
-                    <p id="no-top" className="px-4">{popup.name}<span className="float-right">{'$'.repeat(parseInt(popup.rate))}</span></p>
+                    <p id="no-top" className="px-4"><a href={`/studios/${popup._id}`}>{popup.name}</a><span className="float-right">{'$'.repeat(parseInt(popup.rate))}</span></p>
+                    {/* {state && history.push(`/studios/${lookUp}`)} */}
                   </Popup>
                 }
               </ReactMapGL>

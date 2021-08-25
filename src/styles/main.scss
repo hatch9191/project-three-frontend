@@ -1,7 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&display=swap');
+
+// * {
+//   font-family: 'Raleway', sans-serif;
+// }
 
 * {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 // ! EOIN
@@ -83,9 +87,9 @@ div.no-pad{
 }
 
 .hero-img{
-  background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url("https://mlskmwrajmdu.i.optimole.com/w:auto/h:auto/q:auto/https://www.palmamusicstudios.com/wp-content/uploads/2019/12/P8388.jpg");
-  background-position: center;
-  background-size: cover;
+  background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url("https://res.cloudinary.com/dk0r9bcxy/image/upload/v1629918935/project-image-upload-test/timthumb_1_iia441.jpg");
+  // background-position: center;
+  // background-size: cover;
   // color: rgb(212, 197, 197);
 }
 
@@ -114,6 +118,10 @@ div.css-yk16xz-control{
   border: 1px solid white;
 }
 
+.special.card-body {
+  height: 14rem;
+}
+
 div.white-bg{
   background-color: white;
   border-radius: 5px;
@@ -129,6 +137,24 @@ div.white-bg{
 }
 
 //! Card
+
+.parallax {
+  /* The image used */
+
+  /* Set a specific height */
+  // min-height: 500px;
+  height: 70vh;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+
+
 
 .card-profile-link {
   text-decoration: none;
@@ -191,6 +217,10 @@ img.height-100{
 
 img.card-img-top.resize-img{
   height: 20rem;
+}
+
+.special.format-size.fit{
+  min-height: 18rem;
 }
 
 
@@ -347,6 +377,10 @@ button.full-height{
 
 .sml-crd {
   min-width: 297px;
+}
+
+.sml-crd.ensure {
+  min-width: 240px;
 }
 
 .fav-btn {
