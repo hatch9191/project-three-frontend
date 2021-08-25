@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import { Container, Form, Button, Row, Col } from 'react-bootstrap'
 
 import { profileUser, editUser } from '../../lib/api'
+import ImageUploadField from '../studios/ImageUpload'
 
 function EditUser() {
 
@@ -49,9 +50,13 @@ function EditUser() {
     }
   }
 
+  const handleImageUpload = (imageUrl, name) => {
+    setFormData({ ...formData, [name]: imageUrl })
+  }
+
   return (
     <>
-      <Container className="register" fluid>
+      <Container className="edit-user" fluid>
         <Row>
           <Col className="outer-col"></Col>
           <Col xs={6} className="form-vertical-align">
@@ -112,15 +117,19 @@ function EditUser() {
                 )}
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicAvatar">
-                <Form.Label>Avatar</Form.Label>
-
-                <Form.Control 
+                <ImageUploadField
+                  labelText="Avatar Url"
+                  name="avatar"
+                  value={formData.avatar}
+                  onChange={handleImageUpload}
+                />
+                {/* <Form.Control 
                   type="text" 
                   placeholder="Insert ImageURL"
                   name="avatar"
                   value={formData.avatar}
                   onChange={handleChange}
-                />
+                /> */}
                 {formErrors.avatar && (
                   <Form.Text className="text-muted">
                     {formErrors.avatar}

@@ -24,7 +24,7 @@ function ImageUploadField({ onChange, labelText, name, value }) {
         <p>Uploading image....</p>
       }
       {value && (
-        <div style={{ width: '300px' }}>
+        <div style={{ width: '200px' }}>
           <img
             src={value}
             alt="selected"

@@ -263,6 +263,14 @@ button.full-height{
 
 // ! HARRY
 
+.sml-crd {
+  min-width: 297px;
+}
+
+.fav-btn {
+  width: 190px;
+}
+
 // Navbar
 
 .title {
@@ -289,7 +297,7 @@ button.full-height{
 
 // Login & Register
 
-.login, .register {
+.login, .register, .edit-user {
   height: 80vh;
   min-height: 600px;
   background-repeat: no-repeat;
@@ -316,6 +324,11 @@ button.full-height{
   background-image: url('https://res.cloudinary.com/dn11uqgux/image/upload/v1629408030/sei_project_3_studio_images/a_sharp1_idhzec.jpg');
 }
 
+.edit-user {
+  height: 95vh;
+  background-image: url('https://res.cloudinary.com/dn11uqgux/image/upload/v1629817113/sei_project_3_studio_images/wisseloord1.php_rzwwjz.jpg');
+}
+
 .form-text {
   color: red;
 }
@@ -333,19 +346,16 @@ button.full-height{
   .avatar {
     border-radius: 5px;
   }
-  // .go-right {
-  //   display: flex;
-  //   flex-direction: row;
-  //   flex-wrap: wrap;
-  // }
 }
-
 
 // Terms
 
-ul {
-  list-style: none;
+.terms {
+  ul {
+    list-style: none;
+  }
 }
+
 
 .footer {
   position: absolute;

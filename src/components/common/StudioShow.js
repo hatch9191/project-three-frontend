@@ -9,16 +9,18 @@ import ExtraImagesCard from '../studios/studiosOther/ExtraImagesCard'
 import { isOwner, isAuthenticated } from '../../lib/auth'
 import ClientCard from '../studios/studiosOther/ClientCard'
 import BookingCard from '../cards/BookingCard'
+import { studioFavourited } from '../../lib/api'
 // import StudioInformationCard from '../studios/studiosOther/StudioInformationCard'
 
 
 
-function StudioShow() {
-  const { studioId } = useParams()
+function StudioShow({ loggedIn }) {
+  const { studioId, userId } = useParams()
   const [studio, setStudio] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
   const isLoading = !studio && !isError
 
+  const [favorite, setFavorite] = React.useState(false)
 
   React.useEffect(() => {
     const getData = async () => {
@@ -33,6 +35,24 @@ function StudioShow() {
     }
     getData()
   }, [studioId])
+
+  console.log(userId)
+
+  // studio.favouritedBy.filter(person => {
+  //   if (person._id === )
+  // })
+
+  const handleFavourite = async () => {
+    
+    favorite === false ? setFavorite(true) : setFavorite(false)
+    try {
+      const res = await studioFavourited(studioId)
+      console.log(res)
+    } catch (err) {
+      console.log(err)
+      setIsError(true)
+    }
+  }
 
 
 
@@ -58,9 +78,22 @@ function StudioShow() {
               <div className=" px-3 py-5">
                 <h1 className="display-5 fw-bold">{studio.name}</h1>
                 <Button
-                  className=" full-height"
+                  className="full-height"
                   variant="info"
                   type="submit">Book This Studio Now</Button>
+                <br />
+                {!favorite && loggedIn && (
+                  <Button 
+                    className="full-height fav-btn" 
+                    variant="dark" 
+                    onClick={handleFavourite}>🤍 Add To Favourites</Button>
+                )}
+                {favorite && loggedIn && (
+                  <Button 
+                    className="full-height fav-btn" 
+                    variant="secondary"
+                    onClick={handleFavourite}>♥️ Favourited</Button>
+                )}                
               </div>
             </div >
           </Container >
@@ -149,7 +182,7 @@ function StudioShow() {
           </div>
 
 
-
+          
 
           <div className="py-3"></div>
           {studio.previousClients.length > 0 ?
