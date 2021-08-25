@@ -11,7 +11,7 @@ const initialState = {
 }
 
 
-function BookingDate({ studio }) {
+function BookingDate() {
   const { studioId } = useParams()
   const [formData, setFormData] = React.useState(initialState)
   const [state, setState] = React.useState(false)
