@@ -13,7 +13,7 @@ import Loading from './Loading'
 import Error from './Error'
 import CardLargeAccomodation from '../cards/CardLargeAccomodation'
 import { isAuthenticated } from '../../lib/auth'
-import { profileUser } from '../../lib/api'
+// import { profileUser } from '../../lib/api'
 
 function Home({ setLoggedIn }) {
 
@@ -35,30 +35,30 @@ function Home({ setLoggedIn }) {
     getData()
   }, [])
 
-  const initialState = { 
-    username: '', 
-    email: '',
-    password: '',
-    passwordConfirmation: '',
-    bookedStudio: [],
-    favouritedStudio: [],
-    addedStudio: [],
-  }
-  const { userId } = useParams()
-  const [user, setUser] = React.useState(initialState)
-  
-  React.useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await profileUser(userId)
-        setUser(response.data)
-        console.log(user)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    getData()
-  }, [userId, user, setUser])
+  // const initialState = { 
+  //   username: '', 
+  //   email: '',
+  //   password: '',
+  //   passwordConfirmation: '',
+  //   bookedStudio: [],
+  //   favouritedStudio: [],
+  //   addedStudio: [],
+  // }
+  // const { userId } = useParams()
+  // const [user, setUser] = React.useState(initialState)
+
+  // React.useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const response = await profileUser(userId)
+  //       setUser(response.data)
+  //       console.log(user)
+  //     } catch (err) {
+  //       console.log(err)
+  //     }
+  //   }
+  //   getData()
+  // }, [userId, user, setUser])
 
   const browseAllStudios = () => {
     const rand = 1
