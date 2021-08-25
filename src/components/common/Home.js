@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
+import { useParams } from 'react-router'
 
 import Search from './Search'
 import { getAllStudios } from '../../lib/api'
@@ -12,8 +13,10 @@ import Loading from './Loading'
 import Error from './Error'
 import CardLargeAccomodation from '../cards/CardLargeAccomodation'
 import { isAuthenticated } from '../../lib/auth'
+import { profileUser } from '../../lib/api'
 
 function Home({ setLoggedIn }) {
+
   const [studios, setStudios] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
   const loading = !studios && !isError
@@ -31,6 +34,31 @@ function Home({ setLoggedIn }) {
     }
     getData()
   }, [])
+
+  const initialState = { 
+    username: '', 
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+    bookedStudio: [],
+    favouritedStudio: [],
+    addedStudio: [],
+  }
+  const { userId } = useParams()
+  const [user, setUser] = React.useState(initialState)
+  
+  React.useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await profileUser(userId)
+        setUser(response.data)
+        console.log(user)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getData()
+  }, [userId, user, setUser])
 
   const browseAllStudios = () => {
     const rand = 1

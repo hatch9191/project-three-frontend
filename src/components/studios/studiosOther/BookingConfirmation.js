@@ -55,6 +55,7 @@ function BookingConfirmation({ location }) {
 
   return (
     <>
+      {console.log(studio)}
       <div className="px-4 py-4">
         <div className="container-sm py-4">
           <div>
@@ -64,8 +65,8 @@ function BookingConfirmation({ location }) {
                 <Container>
                   <Row>
                     <Col>
-                      <p className="fw-bold pt-3">Name: <br /> <span className="fw-normal">{studio.name}</span></p>
-                      <p className="fw-bold pt-3">Booking Id:<br /> <span className="fw-normal">{confirmed[0]._id}</span></p>
+                      <p className="fw-bold pt-3">Studio Booked: <br /> <span className="fw-normal">{studio.name}</span></p>
+                      <p className="fw-bold pt-3">Booked By:<br /> <span className="fw-normal">{confirmed[0].bookedBy.username}</span></p>
 
                     </Col>
                     <Col>
@@ -80,6 +81,12 @@ function BookingConfirmation({ location }) {
                     <Col>
                       <p className="fw-bold pt-3">Booked From:<br /> <span className="fw-normal">{confirmed[0].bookedFrom.replaceAll('-', '/')}</span></p>
                       <p className="fw-bold pt-3">Booked To:<br /> <span className="fw-normal">{confirmed[0].bookedTo.replaceAll('-', '/')}</span></p>
+
+                    </Col>
+                    <Col>
+
+                      <p className="fw-bold pt-3">Booking Id: <br /> <span className="fw-normal">{confirmed[0]._id}</span></p>
+                      <Button>Edit Booking</Button>
                     </Col>
                   </Row>
                 </Container>

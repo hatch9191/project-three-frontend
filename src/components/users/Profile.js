@@ -2,39 +2,64 @@ import React from 'react'
 import { useParams, Link, useHistory } from 'react-router-dom'
 import { ListGroup, Modal } from 'react-bootstrap'
 
-import { profileUser } from '../../lib/api'
+import { profileUser, editUser } from '../../lib/api'
 import CardSmall from '../cards/CardSmall'
 import Error from '../common/Error'
 import Loading from '../common/Loading'
+import { removeToken } from '../../lib/auth'
 
 function Profile() {
 
+  const initialState = { 
+    username: '', 
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+    bookedStudio: [],
+    favouritedStudio: [],
+    addedStudio: [],
+  }
+
   const { userId } = useParams()
   const history = useHistory()
-  const [user, setUser] = React.useState(null)
+  const [user, setUser] = React.useState(initialState)
   const [isError, setIsError] = React.useState(false)
   const isLoading = !user && !isError
   const [modalShow, setModalShow] = React.useState(false)
+  const [deactivateData, setDeactivateData] = React.useState(initialState)
 
   React.useEffect(() => {
     const getData = async () => {
       try {
         const response = await profileUser(userId)
         setUser(response.data)
+        setDeactivateData({ 
+          username: `deactivatedUser${user._id}`, 
+          email: `deactivatedUser${user._id}@email.com`,
+          password: 'recoveryPassword',
+          passwordConfirmation: 'recoveryPassword',
+          avatar: '',
+        })
       } catch (err) {
         console.log(err)
         setIsError(true)
       }
     }
     getData()
-  }, [userId])
+  }, [userId, user._id])
 
-  const handleDelete = async () => {
-    // await deleteProfile(user._id)
-    history.push('/')
+  const handleDeactivate = async () => {
+    try {
+      const { data } = await editUser(userId, deactivateData)
+      removeToken()
+      history.push('/')
+      console.log(data)
+    } catch (err) {
+      console.log(err.response.data.errors)
+    }
   }
 
-  const MyVerticallyCenteredModal = (props) => {
+  const DeactivateModal = (props) => {
     return (
       <Modal
         {...props}
@@ -49,11 +74,11 @@ function Profile() {
         </Modal.Header>
         <Modal.Body>
           <p>
-            Please be warned that clicking the below delete button <strong>will remove your account from our database permanently</strong> and we will be <strong>unable to recover any of your data</strong>. By clicking the through you confirm you have understood the above.
+            Please be warned that clicking the below deactivate button <strong>will remove your account from our site</strong>. Some data <strong>may be lost or unrecoverable</strong> once your account is deactivated. By clicking the through you confirm you have understood the above.
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <button type="button" className="btn btn-danger" onClick={handleDelete}>I Understand, Please Delete</button>
+          <button type="button" className="btn btn-danger" onClick={handleDeactivate}>I Understand, Please Deactivate</button>
         </Modal.Footer>
       </Modal>
     )
@@ -149,7 +174,7 @@ function Profile() {
                   <ListGroup as="ul">
                     <ListGroup.Item as="li">
                       You have not listed any Studios yets... <br />
-                      <Link to="/" className="profile-link">
+                      <Link to="/studios/create" className="profile-link">
                         <button type="button" className="btn btn-info px-5">List Your Studio</button>
                       </Link>
                     </ListGroup.Item>
@@ -162,10 +187,10 @@ function Profile() {
                 <h2 className="fs-2">Account Options</h2>
                 <ListGroup as="ul">
                   <ListGroup.Item as="li">
-                    <strong>Delete Your Account</strong> <br />
-                    Once you delete your account, there is no going back. Please be certain!<br />
-                    <button type="button" className="btn btn-danger px-5" onClick={() => setModalShow(true)}>Delete Your Account</button>
-                    <MyVerticallyCenteredModal
+                    <strong>Deactivate Your Account</strong> <br />
+                    Once you deactivate you will need to contact the site administrator by email to recover your account.<br />
+                    <button type="button" className="btn btn-danger px-5" onClick={() => setModalShow(true)}>Deactivate</button>
+                    <DeactivateModal
                       show={modalShow}
                       onHide={() => setModalShow(false)}
                     />

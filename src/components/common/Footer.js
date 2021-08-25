@@ -22,14 +22,14 @@ function Footer() {
             </Col>
             <Col sm>
               <Nav defaultActiveKey="/" className="flex-column">
-                <Nav.Link className="footer-text all" href="">About</Nav.Link>
-                <Nav.Link className="footer-text all" href="">Cookies</Nav.Link>
+                <Nav.Link className="footer-text all" href="/about">About</Nav.Link>
+                <Nav.Link className="footer-text all" href="/cookies">Cookies</Nav.Link>
                 <Nav.Link className="footer-text all" href="">Become a Partner</Nav.Link>
               </Nav>
             </Col>
             <Col sm>
               <Nav defaultActiveKey="/" className="flex-column">
-                <Nav.Link className="footer-text all" href="">Contact Us</Nav.Link>
+                <Nav.Link className="footer-text all" href="/contact-us">Contact Us</Nav.Link>
                 <Nav.Link className="footer-text all" href="">Privacy</Nav.Link>
                 <Nav.Link className="footer-text all" href="/terms">Terms &amp; Conditions </Nav.Link>
               </Nav>
