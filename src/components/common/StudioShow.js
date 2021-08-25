@@ -9,12 +9,9 @@ import ExtraImagesCard from '../studios/studiosOther/ExtraImagesCard'
 import { isOwner, isAuthenticated } from '../../lib/auth'
 import ClientCard from '../studios/studiosOther/ClientCard'
 import BookingCard from '../cards/BookingCard'
-<<<<<<< HEAD
 import CommentSection from '../comments/CommentSection'
 import ShowPageMap from '../studios/studiosOther/ShowPageMap'
-=======
 import { studioFavourited } from '../../lib/api'
->>>>>>> 9b40685dd7194c77dacdf6b50a00583348736094
 // import StudioInformationCard from '../studios/studiosOther/StudioInformationCard'
 
 
@@ -47,7 +44,7 @@ function StudioShow({ loggedIn }) {
   // })
 
   const handleFavourite = async () => {
-    
+
     favorite === false ? setFavorite(true) : setFavorite(false)
     try {
       const res = await studioFavourited(studioId)
@@ -87,17 +84,17 @@ function StudioShow({ loggedIn }) {
                   type="submit">Book This Studio Now</Button>
                 <br />
                 {!favorite && loggedIn && (
-                  <Button 
-                    className="full-height fav-btn" 
-                    variant="dark" 
+                  <Button
+                    className="full-height fav-btn"
+                    variant="dark"
                     onClick={handleFavourite}>🤍 Add To Favourites</Button>
                 )}
                 {favorite && loggedIn && (
-                  <Button 
-                    className="full-height fav-btn" 
+                  <Button
+                    className="full-height fav-btn"
                     variant="secondary"
                     onClick={handleFavourite}>♥️ Favourited</Button>
-                )}                
+                )}
               </div>
             </div >
           </Container >
@@ -186,7 +183,7 @@ function StudioShow({ loggedIn }) {
           </div>
 
 
-          
+
 
           <div className="py-3"></div>
           {studio.previousClients.length > 0 ?

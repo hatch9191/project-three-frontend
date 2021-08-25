@@ -51,6 +51,12 @@ div.make-smaller{
 
 // }
 
+div.cancel-booking-flexi{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 div.col-flexi{
   display: flex;
   flex-direction: column;
