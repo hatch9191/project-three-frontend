@@ -1,17 +1,21 @@
 import React from 'react'
 import { isAuthenticated } from '../../lib/auth'
 
-function BookingCard() {
-  const [bookedFrom, setBookedFrom] = React.useState('null')
-  const [bookedTo, setBookedTo] = React.useState('')
+import 'react-calendar/dist/Calendar.css'
+import BookingDate from './BookingDate'
+// import ReactDate from './ReactDate'
+
+function BookingCard({ studio }) {
+  // const [bookedFrom, setBookedFrom] = React.useState('null')
+  // const [bookedTo, setBookedTo] = React.useState('')
 
 
-  const handleChange = e => {
-    setBookedFrom(e.target.value)
-  }
-  const handleToChange = e => {
-    setBookedTo(e.target.value)
-  }
+  // const handleChange = e => {
+  //   setBookedFrom(e.target.value)
+  // }
+  // const handleToChange = e => {
+  //   setBookedTo(e.target.value)
+  // }
 
 
 
@@ -24,23 +28,10 @@ function BookingCard() {
           <div className="card-body middle-card">
             <h5 className="card-title fs-3">Book This Studio!</h5>
             <p className="card-text">Experiece the very best recording studios, that have taken Grammy awards.</p>
-            {!isAuthenticated() ?
+            {isAuthenticated() ?
               <>
-                <label htmlFor="from">From:</label>
-                <input type="date" id="from" name="from"
-                  onChange={handleChange}
-                  value={bookedFrom}
-                  min="2021-08-23" max="2023-12-31" />
 
-                <label htmlFor="to">To:</label>
-                <input
-                  type="date"
-                  id="to"
-                  name="to"
-                  onChange={handleToChange}
-                  value={bookedTo}
-                  min={bookedFrom} max="2023-12-31" />
-
+                <BookingDate studio={studio} />
               </>
               :
               <>

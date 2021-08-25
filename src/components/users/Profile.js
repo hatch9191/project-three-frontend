@@ -8,7 +8,7 @@ import Error from '../common/Error'
 import Loading from '../common/Loading'
 import { removeToken } from '../../lib/auth'
 
-function Profile() {
+function Profile({ user, setUser }) {
 
   const initialState = { 
     username: '', 
@@ -22,7 +22,6 @@ function Profile() {
 
   const { userId } = useParams()
   const history = useHistory()
-  const [user, setUser] = React.useState(initialState)
   const [isError, setIsError] = React.useState(false)
   const isLoading = !user && !isError
   const [modalShow, setModalShow] = React.useState(false)
@@ -46,7 +45,9 @@ function Profile() {
       }
     }
     getData()
-  }, [userId, user._id])
+  }, [userId, user._id, setUser])
+
+  
 
   const handleDeactivate = async () => {
     try {
@@ -61,6 +62,7 @@ function Profile() {
 
   const DeactivateModal = (props) => {
     return (
+      
       <Modal
         {...props}
         size="lg"
@@ -85,9 +87,12 @@ function Profile() {
   }
 
   console.log(user)
+  
 
   return (
+    
     <>
+    
       {isError && <Error />}
       {isLoading && <Loading />}
       {!isError && !isLoading && (

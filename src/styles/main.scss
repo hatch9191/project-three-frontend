@@ -24,6 +24,10 @@ img.small-img{
   border-bottom-left-radius: 0;
 }
 
+.small-img{
+  width: 5px;
+}
+
 div.mapboxgl-popup-content{
   padding: 0;
   border-radius: 10px;
@@ -40,6 +44,9 @@ div.mapboxgl-map{
   border-radius: 5px;
 }
 
+div.make-smaller{
+  height: 20rem;
+}
 // div.mapboxgl-popup.mapboxgl-popup-anchor-top{
 
 // }
@@ -177,7 +184,7 @@ img.height-100{
 }
 
 img.card-img-top.resize-img{
-  height: 25rem;
+  height: 20rem;
 }
 
 
@@ -236,6 +243,10 @@ button.full-height{
   padding-bottom: 0 !important;
 }
 
+.date-picker::-webkit-input-placeholder {
+  text-align: center;
+}
+
 // ! CHRISTIAN
 
 .form-wrap{
@@ -286,12 +297,15 @@ button.full-height{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  Button {
-    margin-left: 5px;
-    margin-bottom: 3px;
+  .username {
+    margin-right: 12px;
+    font-weight: 600;
   }
-  .no-button {
-    margin-bottom: 3px;
+  .counter {
+    position: relative;
+    top: -8px;
+    margin-right: 1px;
+    font-size: small;
   }
 }
 
@@ -326,7 +340,8 @@ button.full-height{
 
 .edit-user {
   height: 95vh;
-  background-image: url('https://res.cloudinary.com/dn11uqgux/image/upload/v1629817113/sei_project_3_studio_images/wisseloord1.php_rzwwjz.jpg');
+  // background-image: url('https://res.cloudinary.com/dn11uqgux/image/upload/v1629817113/sei_project_3_studio_images/wisseloord1.php_rzwwjz.jpg');
+  background-image: url('https://milocostudios.com/wp-content/themes/miloco/timthumb.php?src=https://milocostudios.com/admin/uploads/1503923634.5575.jpeg&w=1600&h=900&zc=1&q=100');
 }
 
 .form-text {

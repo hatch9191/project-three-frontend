@@ -15,38 +15,61 @@ import Profile from './components/users/Profile'
 import EditUser from './components/users/EditUser'
 import { isAuthenticated } from './lib/auth'
 import StudioShow from './components/common/StudioShow'
+import BookingConfirmation from './components/studios/studiosOther/BookingConfirmation'
 import Cookies from './components/common/Cookies'
 import ContactUs from './components/common/ContactUs'
 import About from './components/common/About'
 
 function App() {
 
+  const initialState = { 
+    username: '', 
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+    bookedStudio: [],
+    favouritedStudio: [],
+    addedStudio: [],
+  }
+
   const [loggedIn, setLoggedIn] = React.useState(isAuthenticated())
-
-  
-
-
+  const [user, setUser] = React.useState(initialState)
 
   return (
     <BrowserRouter>
-      <NavigationBar loggedIn={loggedIn} />
+      <NavigationBar 
+        loggedIn={loggedIn}
+        user={user}
+      />
       <Switch>
         <Route exact path="/">
           <Home 
-            setLoggedIn={setLoggedIn}
-            // user={user} 
-            // setUser={setUser}
+            loggedIn={loggedIn}
+            setLoggedIn={setLoggedIn} 
+            user={user}
+            setUser={setUser}
           />
         </Route>
+        <Route path="/studios/:studioId/bookings/:bookingId" component={BookingConfirmation} />
         <Route path="/studios/:studioId">
-          <StudioShow loggedIn={loggedIn} />
+          <StudioShow 
+            loggedIn={loggedIn}
+            user={user}
+            setUser={setUser} 
+          />
         </Route>
+        <Route path="/studios" component={Filter} />
         <Route path="/studios/create" component={CreateStudio} />
         <Route path="/studios" component={Filter} /> 
         <Route path="/login" component={Login} />
         <Route path="/registration" component={Register} />
         <Route path="/profile/:userId" component={EditUser} />
-        <Route path="/profile" component={Profile} />
+        <Route path="/profile">
+          <Profile 
+            user={user}
+            setUser={setUser}
+          />
+        </Route>
         <Route path="/about" component={About} />
         <Route path="/cookies" component={Cookies} />
         <Route path="/contact-us" component={ContactUs} />
