@@ -39,7 +39,6 @@ function StudioShow() {
   return (
     <>
       <div className="py-4"></div>
-
       {isError && <div className="px-4 py-5 text-center"><Error /></div>}
       {isLoading && <div className="px-4 py-5 text-center"><Loading /></div>}
       {studio && (
@@ -69,10 +68,11 @@ function StudioShow() {
             <div className="container-sm py-4">
               {/* <h2 className="fs-1">Browse All Studios</h2> */}
               <div className="row">
-                {!studio.extraImages ? '' :
-                  studio.extraImages.map(img => (
-                    <ExtraImagesCard key={img} img={img} />
-                  ))
+                {studio.altImageOne &&
+                  <ExtraImagesCard key={studio.altImageOne} img={studio.altImageOne} />
+                }
+                {studio.altImageTwo &&
+                  <ExtraImagesCard key={studio.altImageTwo} img={studio.altImageTwo} />
                 }
               </div>
             </div>
@@ -152,20 +152,16 @@ function StudioShow() {
 
 
           <div className="py-3"></div>
-          {studio.previousClients.length > 0 ?
+          {studio.previousClientsOne &&
             <div className="container-sm py-4">
               <h2 className="fs-1">Studio Clients</h2>
               <div className="row">
-
-                {
-                  studio.previousClients.map(client => (
-                    <ClientCard key={client._id} client={client} />
-                  ))
+                <ClientCard key={studio.previousClientsOne._id} client={studio.previousClientsOne} />
+                {studio.previousClientsTwo &&
+                <ClientCard key={studio.previousClientsTwo._id} client={studio.previousClientsTwo} />
                 }
               </div>
             </div>
-            :
-            ''
           }
 
 

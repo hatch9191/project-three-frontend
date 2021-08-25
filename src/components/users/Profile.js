@@ -174,7 +174,7 @@ function Profile() {
                   <ListGroup as="ul">
                     <ListGroup.Item as="li">
                       You have not listed any Studios yets... <br />
-                      <Link to="/" className="profile-link">
+                      <Link to="/studios/new" className="profile-link">
                         <button type="button" className="btn btn-info px-5">List Your Studio</button>
                       </Link>
                     </ListGroup.Item>

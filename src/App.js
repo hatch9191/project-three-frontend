@@ -36,6 +36,8 @@ function App() {
         <Route exact path="/">
           <Home setLoggedIn={setLoggedIn} />
         </Route>
+        <Route path="/studios/new" component={CreateStudio} />
+        <Route path="/studios/:studioId/edit" component={EditStudio} />
         <Route path="/studios/:studioId" component={StudioShow} />
         <Route path="/studios" component={Filter} />
         <Route path="/login" component={Login} />

@@ -19,7 +19,7 @@ function ImageUploadField({ onChange, labelText, name, value }) {
 
   return (
     <>
-      <label>{labelText || 'Upload Image'}</label>
+      <label>{labelText}</label>
       {isUploading &&
         <p>Uploading image....</p>
       }
@@ -30,12 +30,15 @@ function ImageUploadField({ onChange, labelText, name, value }) {
             alt="selected"
             style={{ width: '100%', height: 'auto' }}
           />
+          {!isUploading &&
+          <p>Image Uploaded!</p>
+          }
         </div>
       )}
-      {!isUploading && !value && (
+      {!isUploading && (
         <>
-          <div className="mb-3">
-            <label className="mb-3">
+          <div style={{ marginTop: 10 }}>
+            <label>
               <input
                 type="file"
                 name={name}

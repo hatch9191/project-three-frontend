@@ -244,13 +244,17 @@ button.full-height{
 }
 
 .form-adjust{
-  width: 600px;
+  width: 750px;
   margin-top: 30px;
-  margin-bottom: 300px;
+  margin-bottom: 50px;
 }
 
 .centered {
-  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.title-spacing {
   margin-bottom: 20px;
 }
 
@@ -259,6 +263,67 @@ button.full-height{
   flex-direction: column;
   margin-bottom: 15px;
   margin-top: 5px;
+}
+
+.invalid-image {
+  border: rgb(203, 0, 0) 1px solid;
+}
+
+.img-upload-spacing {
+  border-radius: 0.5ch;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.image-upload-wrap {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.additional-image-spacing {
+  margin-left: 40px;
+}
+
+.form-button-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.form-button-spacing {
+  margin-top: 40px;
+}
+
+.form-equipment-wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.checkbox-spacing {
+  margin: 5px;
+}
+
+.create-form, .edit-form {
+  Form {
+    border: solid 1px rgb(215, 215, 215);
+    border-radius: 5px;
+    padding: 18px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background-color: whitesmoke;
+  }
+}
+
+.prev-artist-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.artist-half-column {
+  width: 49%;
 }
 
 // ! HARRY
