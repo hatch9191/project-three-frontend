@@ -56,6 +56,7 @@ function App() {
             setUser={setUser}
           />
         </Route>
+        <Route path="/studios/new" component={CreateStudio}/>
         <Route path="/studios/:studioId/bookings/:bookingId" component={BookingConfirmation} />
         <Route path="/studios/:studioId/edit" component={EditStudio} />
         <Route path="/studios/:studioId">
@@ -65,7 +66,6 @@ function App() {
             setUser={setUser}
           />
         </Route>
-        <Route path="/studios/new" component={CreateStudio} />
         <Route path="/studios" component={Filter} />
         <Route path="/login" component={Login} />
         <Route path="/registration" component={Register} />

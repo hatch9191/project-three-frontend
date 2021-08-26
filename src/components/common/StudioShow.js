@@ -191,8 +191,10 @@ function StudioShow({ loggedIn, user, setUser }) {
             <div className="container-sm py-4">
               <h2 className="fs-1">Studio Clients</h2>
               <div className="row">
+                {studio.previousClientsOne.name &&
                 <ClientCard key={studio.previousClientsOne._id} client={studio.previousClientsOne} />
-                {studio.previousClientsTwo &&
+                }
+                {studio.previousClientsTwo.name &&
                 <ClientCard key={studio.previousClientsTwo._id} client={studio.previousClientsTwo} />
                 }
               </div>
