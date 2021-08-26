@@ -1,4 +1,5 @@
 import { Nav, Navbar, Col, Row, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function Footer() {
 
@@ -22,16 +23,16 @@ function Footer() {
             </Col>
             <Col sm>
               <Nav defaultActiveKey="/" className="flex-column">
-                <Nav.Link className="footer-text all" href="/about">About</Nav.Link>
-                <Nav.Link className="footer-text all" href="/cookies">Cookies</Nav.Link>
-                <Nav.Link className="footer-text all" href="">Become a Partner</Nav.Link>
+                <Nav.Link as={Link} to="/about" className="footer-text all">About</Nav.Link>
+                <Nav.Link as={Link} to="/cookies" className="footer-text all">Cookies</Nav.Link>
+                <Nav.Link as={Link} className="footer-text all">Become a Partner</Nav.Link>
               </Nav>
             </Col>
             <Col sm>
               <Nav defaultActiveKey="/" className="flex-column">
-                <Nav.Link className="footer-text all" href="/contact-us">Contact Us</Nav.Link>
-                <Nav.Link className="footer-text all" href="">Privacy</Nav.Link>
-                <Nav.Link className="footer-text all" href="/terms">Terms &amp; Conditions </Nav.Link>
+                <Nav.Link as={Link} to="/contact-us" className="footer-text all" >Contact Us</Nav.Link>
+                <Nav.Link as={Link} className="footer-text all">Privacy</Nav.Link>
+                <Nav.Link as={Link} to="terms" className="footer-text all">Terms &amp; Conditions</Nav.Link>
               </Nav>
             </Col>
           </Row>

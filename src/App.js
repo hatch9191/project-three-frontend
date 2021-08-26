@@ -20,11 +20,7 @@ import Cookies from './components/common/Cookies'
 import ContactUs from './components/common/ContactUs'
 import About from './components/common/About'
 import UserBookings from './components/users/userOther/UserBookings'
-
-
-
-
-
+import ScrollTop from './lib/ScrollTop'
 
 function App() {
 
@@ -41,12 +37,14 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(isAuthenticated())
   const [user, setUser] = React.useState(initialState)
 
+
   return (
     <BrowserRouter>
       <NavigationBar
         loggedIn={loggedIn}
         user={user}
       />
+      <ScrollTop />
       <Switch>
         <Route exact path="/">
           <Home
@@ -56,6 +54,7 @@ function App() {
             setUser={setUser}
           />
         </Route>
+        <Route path="/studios/new" component={CreateStudio} />
         <Route path="/studios/:studioId/bookings/:bookingId" component={BookingConfirmation} />
         <Route path="/studios/:studioId/edit" component={EditStudio} />
         <Route path="/studios/:studioId">
@@ -65,7 +64,6 @@ function App() {
             setUser={setUser}
           />
         </Route>
-        <Route path="/studios/new" component={CreateStudio} />
         <Route path="/studios" component={Filter} />
         <Route path="/login" component={Login} />
         <Route path="/registration" component={Register} />

@@ -7,18 +7,19 @@ import { setToken } from '../../lib/auth'
 
 function Login() {
 
-  const history = useHistory()
-  const [formData, setFormData] = React.useState({
+  const initialState = {
     email: '',
     password: '',
-  })
+  }
+
+  const history = useHistory()
+  const [formData, setFormData] = React.useState(initialState)
   const [isError, setIsError] = React.useState(false)
+  const [formErrors, setFormErrors] = React.useState(initialState)
 
   const handleChange = e => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+    setFormErrors({ ...formErrors, [e.target.name]: '' })
   }
 
   const handleSubmit = async (e) => {
