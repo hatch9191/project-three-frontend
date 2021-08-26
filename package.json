@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "amazon-star-rating": "^1.0.0",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",

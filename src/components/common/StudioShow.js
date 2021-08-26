@@ -64,20 +64,18 @@ function StudioShow({ loggedIn, user, setUser }) {
             style={{
               background: `linear-gradient(rgba(0,0,0,.05), rgba(0,0,0,.05)), url(${studio.mainImage})`,
               height: '70vh',
-
               backgroundSize: 'cover',
               backgroundPosition: 'bottom',
               filter: 'drop-shadow(0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.2))',
               backgroundAttachment: 'fixed',
               backgroundRepeat: 'no-repeat',
-
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
             }}
-
           >
-            < div className="px-4 py-5 text-center" >
+            < div className="px-4 py-5 text-center " >
               <div className=" px-3 py-5">
-                <div className="pt-4"></div>
-                <div className="pt-4"></div>
 
                 <h1 className="display-5 fw-bold">{studio.name}</h1>
                 <Button

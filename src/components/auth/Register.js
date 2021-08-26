@@ -29,7 +29,7 @@ function Register() {
     try {
       if (formData.acceptTerms === !true) {
         throw 'Terms not accepted...'
-      } 
+      }
       await registerUser(formData)
       history.push('/login')
     } catch (err) {
@@ -39,7 +39,7 @@ function Register() {
 
   return (
     <>
-      <Container className="register" fluid>
+      <Container className="register parallax" fluid>
         <Row>
           <Col className="outer-col"></Col>
           <Col xs={6} className="form-vertical-align">
@@ -47,8 +47,8 @@ function Register() {
               <h4>Register</h4>
               <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label>Username</Form.Label>
-                <Form.Control 
-                  type="username" 
+                <Form.Control
+                  type="username"
                   placeholder="Enter Username"
                   name="username"
                   value={formData.username}
@@ -60,8 +60,8 @@ function Register() {
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control 
-                  type="email" 
+                <Form.Control
+                  type="email"
                   placeholder="Enter email"
                   name="email"
                   value={formData.email}
@@ -78,9 +78,9 @@ function Register() {
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control 
-                  type="password" 
-                  placeholder="Password" 
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
@@ -91,8 +91,8 @@ function Register() {
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password Confirmation</Form.Label>
-                <Form.Control 
-                  type="password" 
+                <Form.Control
+                  type="password"
                   placeholder="Password Confirmation"
                   name="passwordConfirmation"
                   value={formData.passwordConfirmation}
@@ -107,7 +107,7 @@ function Register() {
 
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check type="checkbox">
-                  <Form.Check.Input type="checkbox" 
+                  <Form.Check.Input type="checkbox"
                     name="acceptTerms"
                     checked={formData.acceptTerms}
                     value={formData.acceptTerms}

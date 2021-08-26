@@ -1,12 +1,15 @@
-import { Button, Modal } from 'react-bootstrap'
+// import { Button, Modal } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { deleteComment } from '../../lib/api'
 
 function CommentDelete({ comment, studio }) {
-  const [modal, setModal] = React.useState(false)
+  // const [modal, setModal] = React.useState(false)
+  const [clicked, setClicked] = React.useState(false)
   const history = useHistory()
   const { studioId } = useParams()
+
 
 
   const handleDelete = async () => {
@@ -17,12 +20,13 @@ function CommentDelete({ comment, studio }) {
 
 
   const preDelete = () => {
-    setModal(true)
+    // setModal(true)
+    setClicked(true)
   }
 
   return (
     <>
-      {modal && (
+      {/* {modal && (
         <Modal.Dialog>
           <Modal.Header closeButton>
             <Modal.Title>Danger Zone</Modal.Title>
@@ -34,8 +38,9 @@ function CommentDelete({ comment, studio }) {
             <Button onClick={handleDelete} variant="danger">Delete Comment</Button>
           </Modal.Footer>
         </Modal.Dialog>
-      )}
-      <Button onClick={preDelete}>Delete Review</Button>
+      )} */}
+      {!clicked && <Button className="btn-danger" onClick={preDelete}>Delete Review</Button>}
+      {clicked && <Button className="btn-danger" onClick={handleDelete}>Last chance...</Button>}
     </>
   )
 }

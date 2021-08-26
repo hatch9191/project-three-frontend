@@ -9,6 +9,12 @@
 }
 
 // ! EOIN
+
+.flexi-home-hero{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .map-controller {
   position: absolute;
   top: 0;
@@ -435,12 +441,12 @@ button.full-height{
 }
 
 .login {
-  background-image: url('https://res.cloudinary.com/dn11uqgux/image/upload/v1629407610/sei_project_3_studio_images/blackbird_studio1_wxndsw.jpg');
+  background-image: url('https://res.cloudinary.com/dk0r9bcxy/image/upload/v1629971393/project-image-upload-test/timthumb_2_oshke5.jpg');
 }
 
 .register {
   min-height: 640px;
-  background-image: url('https://res.cloudinary.com/dn11uqgux/image/upload/v1629408030/sei_project_3_studio_images/a_sharp1_idhzec.jpg');
+  background-image: url('https://res.cloudinary.com/dk0r9bcxy/image/upload/v1629971780/project-image-upload-test/timthumb_3e_ncivou.jpg');
 }
 
 .edit-user {
@@ -452,7 +458,27 @@ button.full-height{
 .form-text {
   color: red;
 }
+.flexi-col-btn-special{
+  display: flex;
+  align-items: flex-end;
+}
 
+.display-right-here{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.flexi-col-end{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flexi-end-col{
+  display: flex;
+  align-items: flex-end;
+}
 // Profile
 
 .profile-page {

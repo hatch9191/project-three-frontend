@@ -9,7 +9,7 @@ function ShowPageMap({ studio }) {
   const [viewport, setViewport] = React.useState({
     latitude: studio.location.longitude,
     longitude: studio.location.latitude,
-    zoom: 8,
+    zoom: 12,
   })
   const [popup, setPopup] = React.useState(null)
 

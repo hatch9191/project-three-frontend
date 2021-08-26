@@ -34,7 +34,7 @@ function Login() {
 
   return (
     <>
-      <Container className="login" fluid>
+      <Container className="login parallax" fluid>
         <Row>
           <Col className="outer-col"></Col>
           <Col xs={6} className="form-vertical-align">
@@ -42,20 +42,20 @@ function Login() {
               <h4>Login</h4>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control 
-                  type="email" 
+                <Form.Control
+                  type="email"
                   placeholder="Enter email"
                   name="email"
-                  onChange={handleChange} 
+                  onChange={handleChange}
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control 
-                  type="password" 
+                <Form.Control
+                  type="password"
                   placeholder="Password"
                   name="password"
-                  onChange={handleChange} 
+                  onChange={handleChange}
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -66,7 +66,7 @@ function Login() {
                   </Form.Text>
                 )}
               </Form.Group>
-              
+
               <Button variant="secondary" type="submit">
                 Login
               </Button>

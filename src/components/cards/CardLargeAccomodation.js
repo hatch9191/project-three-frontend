@@ -51,7 +51,7 @@ function CardLargeAccomodation({ studios }) {
                     },
                   }}
                 >Hiya</Redirect> : ''}
-              <button onClick={handleClick} type="button" className="btn btn-info px-5">Browse All Studios With Accomodation</button>
+              <button onClick={handleClick} type="button" className="btn btn-info px-5">Browse Accomodations</button>
             </div>
           </div>
         </div>

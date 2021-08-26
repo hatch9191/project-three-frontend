@@ -56,7 +56,7 @@ function EditUser() {
 
   return (
     <>
-      <Container className="edit-user" fluid>
+      <Container className="edit-user parallax" fluid>
         <Row>
           <Col className="outer-col"></Col>
           <Col xs={6} className="form-vertical-align">
@@ -64,8 +64,8 @@ function EditUser() {
               <h4>Update Your Information</h4>
               <Form.Group className="mb-3" controlId="formBasicUsername">
                 <Form.Label>Username</Form.Label>
-                <Form.Control 
-                  type="username" 
+                <Form.Control
+                  type="username"
                   placeholder="Enter Username"
                   name="username"
                   value={formData.username}
@@ -77,9 +77,9 @@ function EditUser() {
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicfirstName">
                 <Form.Label>First Name</Form.Label>
-                <Form.Control 
-                  type="text" 
-                  placeholder="Enter First Name" 
+                <Form.Control
+                  type="text"
+                  placeholder="Enter First Name"
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
@@ -90,8 +90,8 @@ function EditUser() {
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasiclastName">
                 <Form.Label>Last Name</Form.Label>
-                <Form.Control 
-                  type="text" 
+                <Form.Control
+                  type="text"
                   placeholder="Enter Last Name"
                   name="lastName"
                   value={formData.lastName}
@@ -105,8 +105,8 @@ function EditUser() {
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control 
-                  type="email" 
+                <Form.Control
+                  type="email"
                   placeholder="Enter email"
                   name="email"
                   value={formData.email}
@@ -135,7 +135,7 @@ function EditUser() {
                     {formErrors.avatar}
                   </Form.Text>
                 )}
-              </Form.Group>            
+              </Form.Group>
               <Button variant="info" type="submit">
                 Update
               </Button>

@@ -17,10 +17,10 @@ function PromptCreateStudio() {
               <>
                 <div>
                   <Link to="/login" className="profile-link">
-                    <button type="button" className="btn btn-info px-5 mx-3">Log In</button>
+                    <button type="button" className="btn btn-info px-5 mx-2">Log In</button>
                   </Link>
                   <Link to="/registration" className="profile-link">
-                    <button type="button" className="btn btn-info px-5 mx-3">Register</button>
+                    <button type="button" className="btn btn-info px-5 mx-2">Register</button>
                   </Link>
                 </div>
               </>

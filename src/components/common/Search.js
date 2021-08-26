@@ -36,8 +36,10 @@ function Search({ studios }) {
           <FloatingLabel controlId="floatingSelect" label="Location">
             <Form.Select className="remove-border" onChange={handleContinentChange} aria-label="Floating label select example">
               <option value="all">All</option>
-              <option value="north america">North America</option>
               <option value="europe">Europe</option>
+              <option value="north america">North America</option>
+              <option value="south america">South America</option>
+              <option value="oceania">Oceania</option>
               <option value="asia">Asia</option>
             </Form.Select>
           </FloatingLabel>
@@ -60,6 +62,10 @@ function Search({ studios }) {
               <option value="rock">Rock</option>
               <option value="country">Country</option>
               <option value="pop">Pop</option>
+              <option value="techno">Techno</option>
+              <option value="soundtrack">Soundtrack</option>
+              <option value="folk">Folk</option>
+              <option value="metal">Metal</option>
             </Form.Select>
           </FloatingLabel>
         </Col>
