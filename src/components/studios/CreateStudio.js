@@ -5,6 +5,7 @@ import Select from 'react-select'
 import ImageUploadField from './ImageUpload'
 import { createStudio } from '../../lib/api'
 import { useHistory } from 'react-router-dom'
+// import Geocode from 'react-geocode'
 
 const genreSelectOptions = [
   { value: 'classical', label: 'Classical' },
@@ -52,6 +53,8 @@ const initialState = {
   altImageTwo: '',
 }
 
+// Geocode.setApiKey('AIzaSyASTb6epSYP6gFUxaBTTjZMb8kaiLKrf0U')
+
 function CreateStudio() {
   const [formErrors, setFormErrors] = React.useState(initialState)
   const [formData, setFormData] = React.useState({
@@ -81,9 +84,11 @@ function CreateStudio() {
     genres: [
 
     ],
-    previousClients: [],
+    previousClientsOne: {},
+    previousClientsTwo: {},
     mainImage: '',
-    extraImages: [],
+    altImageOne: '',
+    altImageTwo: '',
   })
 
   const history = useHistory()
@@ -134,6 +139,7 @@ function CreateStudio() {
   // * Post Request
 
   const handleSubmit = async e => {
+    // await findLatLong(formData.location.postCode)
     e.preventDefault()
     window.alert(`Submitting ${JSON.stringify(formData, null, 2)}
     ${JSON.stringify(formErrors, null, 2)}`)
@@ -144,6 +150,23 @@ function CreateStudio() {
       setFormErrors(err.response.data.errors)
     }
   }
+
+  // const findLatLong = (postCode) => {
+  //   try {
+  //     Geocode.fromAddress(postCode).then(
+  //       (response) => {
+  //         const { lat, lng } = response.results[0].geometry.location
+  //         setFormData({ ...formData, location: { ...formData.location } })
+  //         console.log(lat, lng)
+  //       },
+  //       (error) => {
+  //         console.error(error)
+  //       }
+  //     )
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   return (
     <Container className="create-form">
