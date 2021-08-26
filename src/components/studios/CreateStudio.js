@@ -5,6 +5,7 @@ import Select from 'react-select'
 import ImageUploadField from './ImageUpload'
 import { createStudio } from '../../lib/api'
 import { useHistory } from 'react-router-dom'
+// import Geocode from 'react-geocode'
 
 const genreSelectOptions = [
   { value: 'classical', label: 'Classical' },
@@ -43,7 +44,7 @@ const initialState = {
   accommodation: false,
   noOfStudios: '',
   genres: [
-  
+
   ],
   previousClientsOne: {},
   previousClientsTwo: {},
@@ -51,6 +52,8 @@ const initialState = {
   altImageOne: '',
   altImageTwo: '',
 }
+
+// Geocode.setApiKey('AIzaSyASTb6epSYP6gFUxaBTTjZMb8kaiLKrf0U')
 
 function CreateStudio() {
   const [formErrors, setFormErrors] = React.useState(initialState)
@@ -79,11 +82,13 @@ function CreateStudio() {
     accommodation: false,
     noOfStudios: '1',
     genres: [
-    
+
     ],
-    previousClients: [],
+    previousClientsOne: {},
+    previousClientsTwo: {},
     mainImage: '',
-    extraImages: [],
+    altImageOne: '',
+    altImageTwo: '',
   })
 
   const history = useHistory()
@@ -134,6 +139,7 @@ function CreateStudio() {
   // * Post Request
 
   const handleSubmit = async e => {
+    // await findLatLong(formData.location.postCode)
     e.preventDefault()
     window.alert(`Submitting ${JSON.stringify(formData, null, 2)}
     ${JSON.stringify(formErrors, null, 2)}`)
@@ -145,6 +151,23 @@ function CreateStudio() {
     }
   }
 
+  // const findLatLong = (postCode) => {
+  //   try {
+  //     Geocode.fromAddress(postCode).then(
+  //       (response) => {
+  //         const { lat, lng } = response.results[0].geometry.location
+  //         setFormData({ ...formData, location: { ...formData.location } })
+  //         console.log(lat, lng)
+  //       },
+  //       (error) => {
+  //         console.error(error)
+  //       }
+  //     )
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+
   return (
     <Container className="create-form">
       <div className="form-wrap">
@@ -155,10 +178,10 @@ function CreateStudio() {
               <Form.Label>Studio Name</Form.Label>
               <Form.Control
                 className={`${formErrors.name ? 'is-invalid' : ''}`}
-                type="text" 
-                placeholder="Enter Studio Name" 
-                name='name' 
-                onChange={handleChange}/>
+                type="text"
+                placeholder="Enter Studio Name"
+                name='name'
+                onChange={handleChange} />
               {formErrors.name && (
                 <Form.Text className="text-muted">A unique studio name is required</Form.Text>
               )}
@@ -166,72 +189,72 @@ function CreateStudio() {
 
             <Form.Group className="mb-3">
               <Form.Label>Description</Form.Label>
-              <Form.Control 
+              <Form.Control
                 as="textarea"
-                className={`${formErrors.description ? 'is-invalid' : ''}`} 
-                rows={3} 
-                placeholder='Write a brief description' 
-                name='description' 
-                onChange={handleChange}/>
+                className={`${formErrors.description ? 'is-invalid' : ''}`}
+                rows={3}
+                placeholder='Write a brief description'
+                name='description'
+                onChange={handleChange} />
               {formErrors.description && (
                 <Form.Text className="text-muted">A studio description is required</Form.Text>
               )}
             </Form.Group>
-            
+
             <h3 className="centered">Address</h3>
             <Form.Group className="mb-3">
               <Form.Label>First line of address</Form.Label>
               <Form.Control
                 className={`${formErrors['location.addressLineOne'] ? 'is-invalid' : ''}`}
-                type="text" 
-                placeholder="First line" 
-                name='addressLineOne' 
-                onChange={handleAddressChange}/>
+                type="text"
+                placeholder="First line"
+                name='addressLineOne'
+                onChange={handleAddressChange} />
               {formErrors['location.addressLineOne'] && (
                 <Form.Text className="text-muted">An address is required</Form.Text>
               )}
             </Form.Group>
-  
+
             <Form.Group className="mb-3">
               <Form.Label>Second line of address</Form.Label>
-              <Form.Control 
-                type="text" 
-                placeholder="Second line" 
-                name='addressLineTwo' 
-                onChange={handleAddressChange}/>
+              <Form.Control
+                type="text"
+                placeholder="Second line"
+                name='addressLineTwo'
+                onChange={handleAddressChange} />
             </Form.Group>
-  
+
             <Form.Group className="mb-3">
               <Form.Label>Post Code/Zip</Form.Label>
-              <Form.Control 
+              <Form.Control
                 type="text"
-                className={`${formErrors['location.postCode'] ? 'is-invalid' : ''}`} 
-                placeholder="Post Code/Zip" 
+                className={`${formErrors['location.postCode'] ? 'is-invalid' : ''}`}
+                placeholder="Post Code/Zip"
                 name='postCode'
-                onChange={handleAddressChange}/>
+                onChange={handleAddressChange} />
               {formErrors['location.postCode'] && (
                 <Form.Text className="text-muted">A post code is required</Form.Text>
               )}
             </Form.Group>
-  
+
             <Form.Group className="mb-3">
               <Form.Label>Town</Form.Label>
-              <Form.Control 
+              <Form.Control
                 type="text"
                 className={`${formErrors['location.town'] ? 'is-invalid' : ''}`}
-                placeholder="Town" 
-                name='town' 
-                onChange={handleAddressChange}/>
+                placeholder="Town"
+                name='town'
+                onChange={handleAddressChange} />
               {formErrors['location.town'] && (
                 <Form.Text className="text-muted">A town is required</Form.Text>
               )}
             </Form.Group>
-  
+
             <Form.Group className="mb-3">
               <Form.Label>Country</Form.Label>
-              <Form.Control 
-                as="select" 
-                name="country" 
+              <Form.Control
+                as="select"
+                name="country"
                 onChange={handleAddressChange}>
                 <option value="united states">United States</option>
                 <option value="united kingdom">United Kingdom</option>
@@ -241,12 +264,12 @@ function CreateStudio() {
                 <option value="australia">Australia</option>
               </Form.Control>
             </Form.Group>
-  
+
             <Form.Group className="mb-3">
               <Form.Label>Continent</Form.Label>
-              <Form.Control 
-                as="select" 
-                name="continent" 
+              <Form.Control
+                as="select"
+                name="continent"
                 onChange={handleAddressChange}>
                 <option value="north america">North America</option>
                 <option value="europe">Europe</option>
@@ -254,39 +277,39 @@ function CreateStudio() {
                 <option value="oceania">Oceania</option>
               </Form.Control>
             </Form.Group>
-  
+
             <Form.Group className="mb-3">
               <Form.Label>Latitude</Form.Label>
-              <Form.Control 
+              <Form.Control
                 type="number"
                 step="0.00001"
                 className={`input ${formErrors['location.latitude'] ? 'is-invalid' : ''}`}
-                placeholder="Latitude" 
-                name='latitude' 
-                onChange={handleAddressChange}/>
+                placeholder="Latitude"
+                name='latitude'
+                onChange={handleAddressChange} />
               {formErrors['location.latitude'] && (
                 <Form.Text className="text-muted">Latitude is required</Form.Text>
               )}
             </Form.Group>
-  
+
             <Form.Group className="mb-3">
               <Form.Label>Longitude</Form.Label>
               <Form.Control
                 type="number"
                 step="0.00001"
-                className={`input ${formErrors['location.longitude'] ? 'is-invalid' : ''}`} 
-                placeholder="Longitude" 
-                name='longitude' 
-                onChange={handleAddressChange}/>
+                className={`input ${formErrors['location.longitude'] ? 'is-invalid' : ''}`}
+                placeholder="Longitude"
+                name='longitude'
+                onChange={handleAddressChange} />
               {formErrors['location.longitude'] && (
                 <Form.Text className="text-muted">Longitude is required</Form.Text>
               )}
             </Form.Group>
-  
+
             <h3 className="centered">Equipment</h3>
             <section className="form-equipment-wrap">
               <div className="field">
-                <label>Guitars</label>                
+                <label>Guitars</label>
                 <input
                   className="checkbox-spacing"
                   type="checkbox"
@@ -294,9 +317,9 @@ function CreateStudio() {
                   onChange={handleRadioButtons}
                   checked={formData.equipment.guitars}
                 />
-                
+
               </div>
-  
+
               <div className="field">
                 <label>Drums</label>
                 <input
@@ -307,7 +330,7 @@ function CreateStudio() {
                   checked={formData.equipment.drums}
                 />
               </div>
-  
+
               <div className="field">
                 <label>Synthesizers</label>
                 <input
@@ -318,7 +341,7 @@ function CreateStudio() {
                   checked={formData.equipment.synthesizers}
                 />
               </div>
-  
+
               <div className="field">
                 <label>Microphones</label>
                 <input
@@ -329,7 +352,7 @@ function CreateStudio() {
                   checked={formData.equipment.microphones}
                 />
               </div>
-  
+
               <div className="field">
                 <label >Mixing Desk</label>
                 <input
@@ -341,56 +364,56 @@ function CreateStudio() {
                 />
               </div>
             </section>
-  
+
             <h3 className="centered">Details</h3>
             <Form.Group className="mb-3">
               <Form.Label>Studio Size</Form.Label>
-              <Form.Control 
-                as="select" 
-                name="size" 
+              <Form.Control
+                as="select"
+                name="size"
                 onChange={handleChange}>
                 <option value="1">Small</option>
                 <option value="2">Medium</option>
                 <option value="3">Large</option>
               </Form.Control>
             </Form.Group>
-  
+
             <Form.Group className="mb-3">
               <Form.Label>Accommmodation on site</Form.Label>
-              <Form.Control 
-                as="select" 
-                name="accommodation" 
+              <Form.Control
+                as="select"
+                name="accommodation"
                 onChange={handleChange}>
                 <option value="false">No</option>
                 <option value="true">Yes</option>
               </Form.Control>
             </Form.Group>
-  
+
             <Form.Group className="mb-3">
               <Form.Label>Number of Studios</Form.Label>
-              <Form.Control 
-                type="number" 
+              <Form.Control
+                type="number"
                 placeholder="Number of Studios"
                 className={`input ${formErrors.noOfStudios ? 'is-invalid' : ''}`}
                 name="noOfStudios"
-                onChange={handleChange}/>
+                onChange={handleChange} />
               {formErrors.noOfStudios && (
                 <Form.Text className="text-muted">Number of Studios is required</Form.Text>
               )}
             </Form.Group>
-  
+
             <Form.Group className="mb-3">
               <Form.Label>Studio Rate</Form.Label>
-              <Form.Control 
-                as="select" 
-                name="rate" 
+              <Form.Control
+                as="select"
+                name="rate"
                 onChange={handleChange}>
                 <option value="1">$</option>
                 <option value="2">$$</option>
                 <option value="3">$$$</option>
               </Form.Control>
             </Form.Group>
-  
+
             {formData &&
               <Form.Group className="mb-3">
                 <Form.Label>Genre Speciality</Form.Label>
@@ -399,49 +422,49 @@ function CreateStudio() {
                   isMulti
                   onChange={selected =>
                     handleMultiSelectChange(selected, 'genres')}
-                  value={formData.genres.map(item => 
+                  value={formData.genres.map(item =>
                     ({ label: item[0].toUpperCase() + item.substring(1), value: item }))}
                 />
-              </Form.Group> 
+              </Form.Group>
             }
             <h3 className="centered">Previous Artists</h3>
             <div className="prev-artist-wrap">
               <div className="artist-half-column">
                 <Form.Group className="mb-3">
                   <Form.Label>Artist Name</Form.Label>
-                  <Form.Control 
-                    type="text" 
-                    placeholder="Artist Name" 
-                    name="name" 
-                    onChange={handlePreviousClientsOne}/>
+                  <Form.Control
+                    type="text"
+                    placeholder="Artist Name"
+                    name="name"
+                    onChange={handlePreviousClientsOne} />
                 </Form.Group>
-  
+
                 <Form.Group className="mb-3">
                   <Form.Label>Artist Image Link</Form.Label>
-                  <Form.Control 
-                    type="text" 
-                    placeholder="Artist Image Link" 
-                    name="image" 
-                    onChange={handlePreviousClientsOne}/>
+                  <Form.Control
+                    type="text"
+                    placeholder="Artist Image Link"
+                    name="image"
+                    onChange={handlePreviousClientsOne} />
                 </Form.Group>
               </div>
               <div className="artist-half-column">
                 <Form.Group className="mb-3">
                   <Form.Label>Artist Name</Form.Label>
                   <Form.Control
-                    type="text" 
-                    placeholder="Artist Name" 
+                    type="text"
+                    placeholder="Artist Name"
                     name="name"
-                    onChange={handlePreviousClientsTwo}/>
+                    onChange={handlePreviousClientsTwo} />
                 </Form.Group>
-      
+
                 <Form.Group className="mb-3">
                   <Form.Label>Artist Image Link</Form.Label>
-                  <Form.Control 
-                    type="text" 
-                    placeholder="Artist Image Link" 
+                  <Form.Control
+                    type="text"
+                    placeholder="Artist Image Link"
                     name="image"
-                    onChange={handlePreviousClientsTwo}/>
+                    onChange={handlePreviousClientsTwo} />
                 </Form.Group>
               </div>
             </div>
@@ -479,9 +502,9 @@ function CreateStudio() {
             </div>
 
             <div className="form-button-wrap">
-              <Button 
-                className="form-button-spacing"
-                variant="primary" 
+              <Button
+                className="form-button-spacing btn-info"
+                variant="primary"
                 type="submit">
                 Submit
               </Button>
@@ -491,7 +514,7 @@ function CreateStudio() {
       </div>
     </Container>
   )
-  
+
 }
 
 export default CreateStudio

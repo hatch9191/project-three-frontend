@@ -32,7 +32,8 @@ function NavigationBar({ loggedIn, user }) {
             {loggedIn && (
               <>
                 <Navbar.Text className="text-info no-button username">Welcome, {user.username}!</Navbar.Text>
-                <Navbar.Text className="no-button" href="">Favourites<Badge pill className="counter" bg="info">{user.favouritedStudio.length}</Badge></Navbar.Text>
+                <Navbar.Text className="no-button" href="">Favourites{!user.favouritedStudio.length >= 1 ? '' : <Badge pill className="counter" bg="info">{user.favouritedStudio.length}</Badge>}</Navbar.Text>
+                {console.log(user)}
                 <Nav.Link href="/profile" className="no-button">Profile</Nav.Link>
                 <Nav.Link href="/"><Button variant="secondary" onClick={handleLogout}>Log Out</Button></Nav.Link>
               </>

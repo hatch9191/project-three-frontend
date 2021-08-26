@@ -39,7 +39,7 @@ function Home({ loggedIn, setLoggedIn, setUser }) {
     getData()
   }, [loggedIn, userId, setUser])
 
-  
+
   // React.useEffect(() => {
   //   if (loggedIn) {
   //     const getData = async () => {
@@ -54,7 +54,7 @@ function Home({ loggedIn, setLoggedIn, setUser }) {
   //     getData()
   //   }
   // }, [loggedIn, userId, setUser])
-  
+
   const browseAllStudios = () => {
     const rand = 1
     const newArr = [...studios]
@@ -79,20 +79,30 @@ function Home({ loggedIn, setLoggedIn, setUser }) {
 
   return (
     <>
-      <Container fluid className="no-pad hero-img">
+      <Container fluid className="no-pad hero-img parallax">
+        <div className="py-4"></div>
+        <div className="pt-4"></div>
+        <div className="pt-4"></div>
+        <div className="pt-4"></div>
+        <div className="pt-4"></div>
+        <div className="pt-4"></div>
+        <div className="pt-4"></div>
+
+
         < div className="px-4 py-5 text-center" >
-          <h1 className="display-5 fw-bold">Find and Book Recording Studios</h1>
+          <h1 className="display-5 fs-1">Find and Book Recording Studios</h1>
           <div className=" px-3 py-4">
             <div className="col-lg-8 py-4 mx-auto">
               <Search studios={studios} />
             </div>
           </div>
         </div >
+
       </Container >
       <div className="py-3"></div>
       <div className="px-4 py-4">
-        <div className="container-sm py-4">
-          <h2 className="fs-1">Browse All Studios</h2>
+        <div className="container-sm py-4" amp-fx="parallax" data-parallax-factor="1.7">
+          <h2 className="fs-1" amp-fx="parallax" data-parallax-factor="1.7">Browse All Studios</h2>
           <div className="row">
             {isError && <Error />}
             {loading && <Loading />}
