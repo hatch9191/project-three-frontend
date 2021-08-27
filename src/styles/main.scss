@@ -27,6 +27,8 @@
   margin: 1rem;
 }
 
+
+
 .remove-text-decoration{
   text-decoration: none;
 }
@@ -540,6 +542,10 @@ button.full-height{
   .row {
     margin: 0 auto;
   }
+}
+
+.create-form.special-case{
+  min-width: 100%;
 }
 
 .parallax {
