@@ -495,7 +495,7 @@ function EditStudio() {
 
                 <div className="form-button-wrap">
                   <Button
-                    className="form-button-spacing"
+                    className="form-button-spacing btn-info"
                     variant="primary"
                     type="submit">
                     Submit
