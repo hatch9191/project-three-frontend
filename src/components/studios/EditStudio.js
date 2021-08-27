@@ -131,6 +131,14 @@ function EditStudio() {
     setFormData({ ...formData, [name]: imageUrl })
   }
 
+  const handleArtistImageUpload = (imageUrl, name) => {
+    setFormData({ ...formData, previousClientsOne: { ...formData.previousClientsOne, [name]: imageUrl } })
+  }
+
+  const handleArtistImageUploadTwo = (imageUrl, name) => {
+    setFormData({ ...formData, previousClientsTwo: { ...formData.previousClientsTwo, [name]: imageUrl } })
+  }
+
   // * Post Request
 
   const handleSubmit = async e => {
@@ -422,16 +430,15 @@ function EditStudio() {
                         value={formData.previousClientsOne.name}
                         onChange={handlePreviousClientsOne}/>
                     </Form.Group>
-          
-                    <Form.Group className="mb-3">
-                      <Form.Label>Artist Image Link</Form.Label>
-                      <Form.Control 
-                        type="text" 
-                        placeholder="Artist Image Link" 
+
+                    <div className="img-upload-spacing">
+                      <ImageUploadField
+                        onChange={handleArtistImageUpload}
+                        labelText="Additional Image"
                         name="image"
                         value={formData.previousClientsOne.image}
-                        onChange={handlePreviousClientsOne}/>
-                    </Form.Group>
+                      />
+                    </div>
                   </div>
                   <div className="artist-half-column">
                     <Form.Group className="mb-3">
@@ -443,16 +450,14 @@ function EditStudio() {
                         value={formData.previousClientsTwo.name}
                         onChange={handlePreviousClientsTwo}/>
                     </Form.Group>
-          
-                    <Form.Group className="mb-3">
-                      <Form.Label>Artist Image Link</Form.Label>
-                      <Form.Control 
-                        type="text" 
-                        placeholder="Artist Image Link" 
+                    <div className="img-upload-spacing">
+                      <ImageUploadField
+                        onChange={handleArtistImageUploadTwo}
+                        labelText="Additional Image"
                         name="image"
                         value={formData.previousClientsTwo.image}
-                        onChange={handlePreviousClientsTwo}/>
-                    </Form.Group>
+                      />
+                    </div>
                   </div>
                 </div>
                 <h3 className="centered">Image Upload</h3>

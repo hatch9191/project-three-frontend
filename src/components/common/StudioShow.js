@@ -229,7 +229,7 @@ function StudioShow({ loggedIn, user, setUser }) {
                 {studio.previousClientsTwo.name &&
                   <ClientCard key={studio.previousClientsTwo._id} client={studio.previousClientsTwo} />
                 }
-                {studio.previousClientsThree.name &&
+                {studio.previousClientsThree &&
                   <ClientCard key={studio.previousClientsThree._id} client={studio.previousClientsThree} />
                 }
               </div>
