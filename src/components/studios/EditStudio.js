@@ -8,8 +8,11 @@ import { getSingleStudio } from '../../lib/api'
 import { useParams, useHistory } from 'react-router-dom'
 import Error from '../common/Error'
 import Loading from '../common/Loading'
+import Geocode from 'react-geocode'
+
 
 const genreSelectOptions = [
+  { value: 'hop-hop', label: 'Hip-Hop' },
   { value: 'classical', label: 'Classical' },
   { value: 'techno', label: 'Techno' },
   { value: 'house', label: 'House' },
@@ -90,6 +93,10 @@ function EditStudio() {
     setFormErrors({ ...formErrors, [event.target.name]: '' })
   }
 
+  const checkKeyDown = (e) => {
+    if (e.key === 'Enter') e.preventDefault()
+  }
+
   const handlePreviousClientsOne = (event) => {
     const value = event.target.value
     setFormData({ ...formData, previousClientsOne: { ...formData.previousClientsOne, [event.target.name]: value } })
@@ -128,8 +135,6 @@ function EditStudio() {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    window.alert(`Submitting ${JSON.stringify(formData, null, 2)}
-    ${JSON.stringify(formErrors, null, 2)}`)
     try {
       const { data } = await editStudio(studioId, formData)
       history.push(`/studios/${data._id}`)
@@ -138,6 +143,20 @@ function EditStudio() {
     }
   }
 
+  // * Finds Lat/Long based on postcode. Calls when you leave the postcode input (onblur)
+
+  const findLatLong = () => {
+    Geocode.fromAddress(formData.location.postCode).then(
+      async (response) => {
+        const { lat, lng } = response.results[0].geometry.location
+        setFormData({ ...formData, location: { ...formData.location, latitude: lng, longitude: lat } })
+        console.log(lat, lng)
+      },
+      (error) => {
+        console.error(error)
+      }
+    )
+  }
   return (
     <Container className="create-form">
       {isError && <div className="px-4 py-5 text-center"><Error /></div>}
@@ -146,7 +165,7 @@ function EditStudio() {
         <>
           <div className="form-wrap">
             <div className="form-adjust">
-              <Form onSubmit={handleSubmit}>
+              <Form onSubmit={handleSubmit} onKeyDown={(e) => checkKeyDown(e)}>
                 <h1 className="title-spacing">Edit your Studio</h1>
                 <Form.Group className="mb-3">
                   <Form.Label>Studio Name</Form.Label>
@@ -210,7 +229,8 @@ function EditStudio() {
                     placeholder="Post Code/Zip" 
                     name='postCode' 
                     value={formData.location.postCode}
-                    onChange={handleAddressChange}/>
+                    onChange={handleAddressChange}
+                    onBlur={findLatLong}/>
                   {formErrors['location.postCode'] && (
                     <Form.Text className="text-muted">A post code is required</Form.Text>
                   )}
@@ -253,43 +273,14 @@ function EditStudio() {
                     name="continent" 
                     value={formData.location.continent}
                     onChange={handleAddressChange}>
-                    <option value="europe">Europe</option>
-                    <option value="north america">North America</option>
-                    <option value="asia">Asia</option>
-                    <option value="oceania">Oceania</option>
+                    <option value="North America">North America</option>
+                    <option value="North America">South America</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Oceania">Oceania</option>
                   </Form.Control>
                 </Form.Group>
-        
-                <Form.Group className="mb-3">
-                  <Form.Label>Latitude</Form.Label>
-                  <Form.Control 
-                    type="number"
-                    step="0.00001"
-                    className={`input ${formErrors['location.latitude'] ? 'is-invalid' : ''}`} 
-                    placeholder="Latitude" 
-                    name='latitude'
-                    value={formData.location.latitude}
-                    onChange={handleAddressChange}/>
-                  {formErrors['location.latitude'] && (
-                    <Form.Text className="text-muted">Latitude is required</Form.Text>
-                  )}
-                </Form.Group>
-        
-                <Form.Group className="mb-3">
-                  <Form.Label>Longitude</Form.Label>
-                  <Form.Control 
-                    type="number"
-                    step="0.00001"
-                    className={`input ${formErrors['location.longitude'] ? 'is-invalid' : ''}`} 
-                    placeholder="Longitude" 
-                    name='longitude'
-                    value={formData.location.longitude}
-                    onChange={handleAddressChange}/>
-                  {formErrors['location.longitude'] && (
-                    <Form.Text className="text-muted">Longitude is required</Form.Text>
-                  )}
-                </Form.Group>
-        
+
                 <h3 className="centered">Equipment</h3>
                 <section className="form-equipment-wrap">
                   <div className="field">
@@ -438,7 +429,7 @@ function EditStudio() {
                         type="text" 
                         placeholder="Artist Image Link" 
                         name="image"
-                        value={formData.previousClientsOne.image} 
+                        value={formData.previousClientsOne.image}
                         onChange={handlePreviousClientsOne}/>
                     </Form.Group>
                   </div>
@@ -449,7 +440,7 @@ function EditStudio() {
                         type="text" 
                         placeholder="Artist Name" 
                         name="name"
-                        value={formData.previousClientsTwo.name} 
+                        value={formData.previousClientsTwo.name}
                         onChange={handlePreviousClientsTwo}/>
                     </Form.Group>
           
@@ -459,7 +450,7 @@ function EditStudio() {
                         type="text" 
                         placeholder="Artist Image Link" 
                         name="image"
-                        value={formData.previousClientsTwo.image} 
+                        value={formData.previousClientsTwo.image}
                         onChange={handlePreviousClientsTwo}/>
                     </Form.Group>
                   </div>

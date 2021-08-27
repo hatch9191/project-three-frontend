@@ -5,9 +5,10 @@ import Select from 'react-select'
 import ImageUploadField from './ImageUpload'
 import { createStudio } from '../../lib/api'
 import { useHistory } from 'react-router-dom'
-// import Geocode from 'react-geocode'
+import Geocode from 'react-geocode'
 
 const genreSelectOptions = [
+  { value: 'hop-hop', label: 'Hip-Hop' },
   { value: 'classical', label: 'Classical' },
   { value: 'techno', label: 'Techno' },
   { value: 'house', label: 'House' },
@@ -46,14 +47,20 @@ const initialState = {
   genres: [
 
   ],
-  previousClientsOne: {},
-  previousClientsTwo: {},
+  previousClientsOne: {
+    name: '',
+    image: '',
+  },
+  previousClientsTwo: {
+    name: '',
+    image: '',
+  },
   mainImage: '',
   altImageOne: '',
   altImageTwo: '',
 }
 
-// Geocode.setApiKey('AIzaSyASTb6epSYP6gFUxaBTTjZMb8kaiLKrf0U')
+Geocode.setApiKey(process.env.REACT_APP_GOOGLE_GEOLOCATE_API)
 
 function CreateStudio() {
   const [formErrors, setFormErrors] = React.useState(initialState)
@@ -84,8 +91,14 @@ function CreateStudio() {
     genres: [
 
     ],
-    previousClientsOne: {},
-    previousClientsTwo: {},
+    previousClientsOne: {
+      name: '',
+      image: '',
+    },
+    previousClientsTwo: {
+      name: '',
+      image: '',
+    },
     mainImage: '',
     altImageOne: '',
     altImageTwo: '',
@@ -94,6 +107,10 @@ function CreateStudio() {
   const history = useHistory()
 
   // * Change Handlers
+
+  const checkKeyDown = (e) => {
+    if (e.key === 'Enter') e.preventDefault()
+  }
 
   const handleChange = (event) => {
     const value = event.target.value
@@ -110,7 +127,6 @@ function CreateStudio() {
     const value = event.target.value
     setFormData({ ...formData, previousClientsTwo: { ...formData.previousClientsTwo, [event.target.name]: value } })
   }
-
 
   const handleRadioButtons = (event) => {
     const value = event.target.checked
@@ -139,10 +155,7 @@ function CreateStudio() {
   // * Post Request
 
   const handleSubmit = async e => {
-    // await findLatLong(formData.location.postCode)
     e.preventDefault()
-    window.alert(`Submitting ${JSON.stringify(formData, null, 2)}
-    ${JSON.stringify(formErrors, null, 2)}`)
     try {
       const { data } = await createStudio(formData)
       history.push(`/studios/${data._id}`)
@@ -151,28 +164,24 @@ function CreateStudio() {
     }
   }
 
-  // const findLatLong = (postCode) => {
-  //   try {
-  //     Geocode.fromAddress(postCode).then(
-  //       (response) => {
-  //         const { lat, lng } = response.results[0].geometry.location
-  //         setFormData({ ...formData, location: { ...formData.location } })
-  //         console.log(lat, lng)
-  //       },
-  //       (error) => {
-  //         console.error(error)
-  //       }
-  //     )
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+  const findLatLong = () => {
+    Geocode.fromAddress(formData.location.postCode).then(
+      async (response) => {
+        const { lat, lng } = response.results[0].geometry.location
+        setFormData({ ...formData, location: { ...formData.location, latitude: lng, longitude: lat } })
+        console.log(lat, lng)
+      },
+      (error) => {
+        console.error(error)
+      }
+    )
+  }
 
   return (
     <Container className="create-form">
       <div className="form-wrap">
         <div className="form-adjust">
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} onKeyDown={(e) => checkKeyDown(e)}>
             <h1 className="title-spacing">List a Studio</h1>
             <Form.Group className="mb-3">
               <Form.Label>Studio Name</Form.Label>
@@ -231,12 +240,12 @@ function CreateStudio() {
                 className={`${formErrors['location.postCode'] ? 'is-invalid' : ''}`}
                 placeholder="Post Code/Zip"
                 name='postCode'
-                onChange={handleAddressChange} />
+                onChange={handleAddressChange}
+                onBlur={findLatLong} />
               {formErrors['location.postCode'] && (
                 <Form.Text className="text-muted">A post code is required</Form.Text>
               )}
             </Form.Group>
-
             <Form.Group className="mb-3">
               <Form.Label>Town</Form.Label>
               <Form.Control
@@ -271,39 +280,12 @@ function CreateStudio() {
                 as="select"
                 name="continent"
                 onChange={handleAddressChange}>
-                <option value="north america">North America</option>
-                <option value="europe">Europe</option>
-                <option value="asia">Asia</option>
-                <option value="oceania">Oceania</option>
+                <option value="North America">North America</option>
+                <option value="North America">South America</option>
+                <option value="Europe">Europe</option>
+                <option value="Asia">Asia</option>
+                <option value="Oceania">Oceania</option>
               </Form.Control>
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label>Latitude</Form.Label>
-              <Form.Control
-                type="number"
-                step="0.00001"
-                className={`input ${formErrors['location.latitude'] ? 'is-invalid' : ''}`}
-                placeholder="Latitude"
-                name='latitude'
-                onChange={handleAddressChange} />
-              {formErrors['location.latitude'] && (
-                <Form.Text className="text-muted">Latitude is required</Form.Text>
-              )}
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label>Longitude</Form.Label>
-              <Form.Control
-                type="number"
-                step="0.00001"
-                className={`input ${formErrors['location.longitude'] ? 'is-invalid' : ''}`}
-                placeholder="Longitude"
-                name='longitude'
-                onChange={handleAddressChange} />
-              {formErrors['location.longitude'] && (
-                <Form.Text className="text-muted">Longitude is required</Form.Text>
-              )}
             </Form.Group>
 
             <h3 className="centered">Equipment</h3>
@@ -317,7 +299,6 @@ function CreateStudio() {
                   onChange={handleRadioButtons}
                   checked={formData.equipment.guitars}
                 />
-
               </div>
 
               <div className="field">
