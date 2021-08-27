@@ -61,7 +61,6 @@ function CommentForm({ setStudio }) {
                 {/* {formErrors && (
                   <Form.Text className="text-muted"><strong className="fw-bold">Rating and review</strong> are required for the review to be submitted.</Form.Text>
                 )} */}
-                {console.log(formErrors)}
               </Form.Group>
 
               <Button variant="info" type="submit">

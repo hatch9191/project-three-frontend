@@ -18,10 +18,10 @@ function ShowPageMap({ studio }) {
     <>
       <div className="px-4 py-2">
         <div className="container-sm py-4 ">
-          <div className="map-container rounded make-smaller">
+          <div className="map-container rounded make-smaller max-height-500px">
 
             <ReactMapGL
-              className=""
+              className="max-height-500px"
               mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
               height="100%"
               width="100%"

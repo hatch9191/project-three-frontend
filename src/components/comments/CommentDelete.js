@@ -1,21 +1,25 @@
 // import { Button, Modal } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 import React from 'react'
-import { useHistory, useParams } from 'react-router-dom'
-import { deleteComment } from '../../lib/api'
+import { useParams } from 'react-router-dom'
+import { deleteComment, getSingleStudio } from '../../lib/api'
 
-function CommentDelete({ comment, studio }) {
+function CommentDelete({ comment, studio, setStudio }) {
   // const [modal, setModal] = React.useState(false)
   const [clicked, setClicked] = React.useState(false)
-  const history = useHistory()
   const { studioId } = useParams()
 
 
 
-  const handleDelete = async () => {
-    await deleteComment(studio._id, comment._id)
-    history.push(`/studios/${studioId}`)
-    location.reload()
+  const handleDelete = async e => {
+    e.preventDefault()
+    try {
+      await deleteComment(studio._id, comment._id)
+      const res = await getSingleStudio(studioId)
+      setStudio(res.data)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
 
