@@ -51,6 +51,7 @@ function Register() {
                   type="username"
                   placeholder="Enter Username"
                   name="username"
+                  className={`${formErrors.username ? 'is-invalid' : ''}`}
                   value={formData.username}
                   onChange={handleChange}
                 />
@@ -64,6 +65,7 @@ function Register() {
                   type="email"
                   placeholder="Enter email"
                   name="email"
+                  className={`${formErrors.email ? 'is-invalid' : ''}`}
                   value={formData.email}
                   onChange={handleChange}
                 />
@@ -82,6 +84,7 @@ function Register() {
                   type="password"
                   placeholder="Password"
                   name="password"
+                  className={`${formErrors.password ? 'is-invalid' : ''}`}
                   value={formData.password}
                   onChange={handleChange}
                 />
@@ -95,6 +98,7 @@ function Register() {
                   type="password"
                   placeholder="Password Confirmation"
                   name="passwordConfirmation"
+                  className={`${formErrors.passwordConfirmation ? 'is-invalid' : ''}`}
                   value={formData.passwordConfirmation}
                   onChange={handleChange}
                 />
@@ -109,6 +113,7 @@ function Register() {
                 <Form.Check type="checkbox">
                   <Form.Check.Input type="checkbox"
                     name="acceptTerms"
+                    className={`checkbox ${formErrors.acceptTerms ? 'is-invalid' : ''}`}
                     checked={formData.acceptTerms}
                     value={formData.acceptTerms}
                     onChange={handleChange}

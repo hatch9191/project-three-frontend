@@ -32,8 +32,6 @@ function EditUser() {
     getData()
   }, [userId])
 
-  console.log(formData)
-
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
     setFormErrors({ ...formErrors, [e.target.name]: '' })
