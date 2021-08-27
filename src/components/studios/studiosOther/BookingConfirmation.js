@@ -2,48 +2,19 @@ import React from 'react'
 import { useParams } from 'react-router'
 import { Row, Col, Container, Button } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
+import ShowPageMap from './ShowPageMap'
 
 function BookingConfirmation({ location }) {
   const { bookingId } = useParams()
   const history = useHistory()
 
-  // const [studio, setStudio] = React.useState(null)
-  // const [booking, setBooking] = React.useState(null)
-  // const [isError, setIsError] = React.useState(false)
-  // const isLoading = !studio && !isError
-
-
-  // React.useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const studioRes = await getSingleStudio(studioId)
-  //       setStudio(studioRes.data)
-  //     } catch (err) {
-  //       console.log(err)
-  //       setIsError(true)
-  //     }
-  //   }
-  //   getData()
-  // }, [studioId])
-
-
-  // const bookingConfirmation = async () => {
-  //   try {
-  //     const bookingConfirm = studio.bookings.filter(booking => {
-  //       return booking._id === bookingId
-  //     })
-  //     if (!bookingConfirmation) throw new Error
-  //     setBooking(bookingConfirm[0])
-  //     return booking
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-
   const handleClick = () => {
     history.push('/')
   }
 
+
   const studio = location.state.studios.test
+
 
   const getTheBooking = () => {
     return studio.bookings.filter(booking => {
@@ -86,7 +57,6 @@ function BookingConfirmation({ location }) {
                     <Col>
 
                       <p className="fw-bold pt-3">Booking Id: <br /> <span className="fw-normal">{confirmed[0]._id}</span></p>
-                      <Button>Edit Booking</Button>
                     </Col>
                   </Row>
                 </Container>
@@ -97,12 +67,17 @@ function BookingConfirmation({ location }) {
       </div>
       <div className="px-4 py-4">
         <div className="container-sm py-4">
+          <ShowPageMap studio={studio} />
+        </div>
+      </div>
+      <div className="px-4 py-4">
+        <div className="container-sm py-4">
           <div className="card mb-3 mr-3 display-card-hor card-shadow" >
             <div className="row g-0">
               <div className="card-body middle-card">
                 <h5 className="card-title fs-3">Check out more studios!</h5>
-                <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <Button className="info" onClick={handleClick}>Discover</Button>
+                <p className="card-text">AirStudio offer a range of excellent worldwide recording studios, carefully selected for different purposes and budgets. </p>
+                <Button className="info btn-info" onClick={handleClick}>Browse Our Studios</Button>
               </div>
             </div>
           </div>

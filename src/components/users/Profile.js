@@ -7,6 +7,7 @@ import CardSmall from '../cards/CardSmall'
 import Error from '../common/Error'
 import Loading from '../common/Loading'
 import { removeToken } from '../../lib/auth'
+import CardBookedDisplay from '../cards/CardBookedDisplay'
 
 function Profile({ user, setUser }) {
 
@@ -125,7 +126,8 @@ function Profile({ user, setUser }) {
                   }
                   {user.bookedStudio && (
                     user.bookedStudio.map(studio => (
-                      <CardSmall key={studio._id} studio={studio} />
+                      // <CardSmall key={studio._id} studio={studio} />
+                      <CardBookedDisplay key={studio._id} studio={studio} />
                     ))
                   )}
                 </div>

@@ -9,6 +9,12 @@
 }
 
 // ! EOIN
+
+.flexi-home-hero{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .map-controller {
   position: absolute;
   top: 0;
@@ -438,7 +444,31 @@ button.full-height{
 .form-text {
   color: red;
 }
+.flexi-col-btn-special{
+  display: flex;
+  align-items: flex-end;
+}
 
+.display-right-here{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.max-height-500px{
+  max-height: 500px;
+}
+
+.flexi-col-end{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flexi-end-col{
+  display: flex;
+  align-items: flex-end;
+}
 // Profile
 
 .profile-page {

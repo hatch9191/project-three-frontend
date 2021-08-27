@@ -27,7 +27,7 @@ function BookingCard({ studio }) {
         <div className="row g-0">
           <div className="card-body middle-card">
             <h5 className="card-title fs-3">Book This Studio!</h5>
-            <p className="card-text">Experiece the very best recording studios, that have taken Grammy awards.</p>
+            <p className="card-text">Take your music to the next level and experiece world renowned recording studios.</p>
             {isAuthenticated() ?
               <>
 

@@ -9,7 +9,6 @@ const initialState = {
   text: '',
 }
 
-
 function CommentForm({ setStudio }) {
   const { studioId } = useParams()
   const [formData, setFormData] = React.useState(initialState)
@@ -20,7 +19,6 @@ function CommentForm({ setStudio }) {
     setFormData({ ...formData, [e.target.name]: e.target.value })
     setFormErrors({ ...formErrors, [e.target.name]: '' })
   }
-
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -54,10 +52,15 @@ function CommentForm({ setStudio }) {
                   <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
                 </Form.Select>
               </Form.Group>
-              <Form.Group className="mb-3 w-50" controlId="exampleForm.ControlTextarea1">
+              <Form.Group className="mb-3 w-50 " controlId="exampleForm.ControlTextarea1">
                 {/* <Form.Label>Example textarea</Form.Label> */}
+                {/* <Form.Control className={`input ${!formErrors ? 'is-invalid' : ''}`} name="text" onChange={handleChange} placeholder="How did you like this studio?" as="textarea" rows={3} /> */}
+                {/* {formErrors && (
+                  <Form.Text className="text-muted"><strong className="fw-bold">Rating and review</strong> are required for the review to be submitted.</Form.Text>
+                )} */}
                 <Form.Control name="text" onChange={handleChange} placeholder="How did you like this studio?" as="textarea" value={formData.text} rows={3} />
               </Form.Group>
+
               <Button variant="info" type="submit">
                 Submit
               </Button>

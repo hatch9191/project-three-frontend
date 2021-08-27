@@ -73,11 +73,14 @@ function StudioShow({ loggedIn, user, setUser }) {
               filter: 'drop-shadow(0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.2))',
               backgroundAttachment: 'fixed',
               backgroundRepeat: 'no-repeat',
-            }}>
-            <div className="px-4 py-5 text-center" >
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+          >
+            < div className="px-4 py-5 text-center " >
               <div className=" px-3 py-5">
-                <div className="pt-4"></div>
-                <div className="pt-4"></div>
+
                 <h1 className="display-5 fw-bold">{studio.name}</h1>
                 <Button
                   className="full-height"

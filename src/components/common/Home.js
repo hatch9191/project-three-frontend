@@ -39,24 +39,8 @@ function Home({ loggedIn, setLoggedIn, setUser }) {
     getData()
   }, [loggedIn, userId, setUser])
 
-
-  // React.useEffect(() => {
-  //   if (loggedIn) {
-  //     const getData = async () => {
-  //       try {
-  //         const response = await profileUser(userId)
-  //         setUser(response.data)
-  //       } catch (err) {
-  //         console.log(err)
-  //         setIsError(true)
-  //       }
-  //     }
-  //     getData()
-  //   }
-  // }, [loggedIn, userId, setUser])
-
   const browseAllStudios = () => {
-    const rand = 1
+    const rand = Math.floor(Math.random() * 15)
     const newArr = [...studios]
     const resultArr = newArr.splice(rand, 3)
     return resultArr.filter(studio => {
@@ -71,7 +55,8 @@ function Home({ loggedIn, setLoggedIn, setUser }) {
         return studio
       }
     })
-    const newResultArr = resultArr.splice(0, 3)
+    const rand = Math.floor(Math.random() * 5)
+    const newResultArr = resultArr.splice(rand, 3)
     return newResultArr.filter(studio => {
       return studio
     })
@@ -79,15 +64,7 @@ function Home({ loggedIn, setLoggedIn, setUser }) {
 
   return (
     <>
-      <Container fluid className="no-pad hero-img parallax">
-        <div className="py-4"></div>
-        <div className="pt-4"></div>
-        <div className="pt-4"></div>
-        <div className="pt-4"></div>
-        <div className="pt-4"></div>
-        <div className="pt-4"></div>
-        <div className="pt-4"></div>
-
+      <Container fluid className="no-pad hero-img parallax flexi-home-hero">
 
         < div className="px-4 py-5 text-center" >
           <h1 className="display-5 fs-1">Find and Book Recording Studios</h1>
