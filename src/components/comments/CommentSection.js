@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form } from 'react-bootstrap'
+import { Form, Row, Col } from 'react-bootstrap'
 import CommentDelete from './CommentDelete'
 import CommentForm from './CommentForm'
 import { isOwner } from '../../lib/auth'
@@ -40,16 +40,23 @@ function CommentSection({ studio, setStudio }) {
       {!studio.comments.length ? '' :
         <div className="px-4 py-2">
           <div className="container-sm py-4 ">
-            <div className="w-25">
-              <p className="inline-block"><strong>Average Rating:</strong> {star.repeat(Math.round(studio.avgRating.toFixed(1)))}</p>
-              <Form.Select className="nothing" onChange={handleChange} aria-label="Floating label select example">
-                <option value="" selected disabled>Reviews</option>
-                <option value="highestRated">Highest to Lowest Rated</option>
-                <option value="lowestRated">Lowest to Highest Rated</option>
-                <option value="newest">Newest</option>
-                <option value="oldest">Oldest</option>
-              </Form.Select>
-            </div>
+            <Row>
+              <Col>
+                <p className="inline-block"><strong>Average Rating:</strong> {star.repeat(Math.round(studio.avgRating.toFixed(1)))}</p>
+              </Col>
+              <Col className="flexi-col-end">
+                <div className="w-25">
+
+                  <Form.Select className="nothing" onChange={handleChange} aria-label="Floating label select example">
+                    <option value="" selected disabled>Reviews</option>
+                    <option value="highestRated">Highest to Lowest Rated</option>
+                    <option value="lowestRated">Lowest to Highest Rated</option>
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                  </Form.Select>
+                </div>
+              </Col>
+            </Row>
           </div>
         </div>
       }
@@ -63,17 +70,23 @@ function CommentSection({ studio, setStudio }) {
           </div>
         </>
         :
-        <div className="px-4 py-2">
+        <div className="px-4">
           <div className="container-sm py-4 ">
             <div className="card small-width">
               <div className="list-group list-group-flush">
 
                 {sortComments().map(comment => (
                   <div key={comment._id} className="list-group-item">
-                    <p className="fw-bold pt-3">Review by: <span className="fw-normal">{comment.addedBy.username[0].toUpperCase() + comment.addedBy.username.substr(1).toLowerCase()}</span></p>
-                    <p className="fw-bold pt-3">Rated: <span className="fw-normal">{comment.rating}/5</span></p>
-                    <p>{comment.text}</p>
-                    {isOwner(comment.addedBy._id) && <div className=" container display-right"><CommentDelete comment={comment} studio={studio} /></div>}
+                    <Row>
+                      <Col>
+                        <p className="fw-bold pt-3">Review by: <span className="fw-normal">{comment.addedBy.username[0].toUpperCase() + comment.addedBy.username.substr(1).toLowerCase()}</span></p>
+                        <p className="fw-bold">Rated: <span className="fw-normal">{comment.rating}/5</span></p>
+                        <p>{comment.text}</p>
+                      </Col>
+                      <Col className="flexi-col-btn-special">
+                        {isOwner(comment.addedBy._id) && <div className=" container display-right-here"><CommentDelete comment={comment} studio={studio} setStudio={setStudio} /></div>}
+                      </Col>
+                    </Row>
                   </div>
                 ))}
               </div>

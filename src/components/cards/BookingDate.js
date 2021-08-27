@@ -1,9 +1,10 @@
 import { Container, Col, Row, Button, Form } from 'react-bootstrap'
 import moment from 'moment'
-import React from 'react'
 import { createBooking, getSingleStudio } from '../../lib/api'
 import { useParams } from 'react-router'
 import { Redirect } from 'react-router-dom'
+import React from 'react'
+
 
 const initialState = {
   bookedFrom: '',
@@ -14,12 +15,15 @@ const initialState = {
 function BookingDate() {
   const { studioId } = useParams()
   const [formData, setFormData] = React.useState(initialState)
+
   const [state, setState] = React.useState(false)
   const [theId, setTheId] = React.useState('')
 
   const [dummyFrom, setDummyFrom] = React.useState('')
   const [dummyTo, setDummyTo] = React.useState('')
   const [test, setTest] = React.useState(null)
+
+
 
 
   const handleFromChange = e => {
@@ -36,6 +40,9 @@ function BookingDate() {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
+      console.log(Number(dummyFrom.replaceAll('-', '')))
+      console.log(Number(dummyTo.replaceAll('-', '')))
+      if (Number(dummyFrom.replaceAll('-', '')) > Number(dummyTo.replaceAll('-', ''))) throw new Error
       const bookingRes = await createBooking(studioId, formData)
       const studioRes = await getSingleStudio(studioId)
       setTest(studioRes.data)
@@ -77,9 +84,13 @@ function BookingDate() {
                   value={dummyTo}
                   min={today}
                   max="2023-12-31" />
+                {/* {formErrors && (
+                  <Form.Text className="text-muted">Rating and review are required to submit a review.</Form.Text>
+                )}
+                {console.log(formErrors)} */}
               </Col>
-              <Col>
-                <Button variant="info" type="submit">Book</Button>
+              <Col className="flexi-end-col">
+                <Button variant="info" type="submit">Book Now</Button>
               </Col>
             </Row>
           </Container >

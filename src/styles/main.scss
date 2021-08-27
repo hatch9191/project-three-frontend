@@ -9,6 +9,12 @@
 }
 
 // ! EOIN
+
+.flexi-home-hero{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .map-controller {
   position: absolute;
   top: 0;
@@ -136,26 +142,6 @@ div.white-bg{
   margin-bottom: 0.5rem;
 }
 
-//! Card
-
-.parallax {
-  /* The image used */
-
-  /* Set a specific height */
-  // min-height: 500px;
-  height: 70vh;
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-
-
-
-
-
 .card-profile-link {
   text-decoration: none;
 }
@@ -163,6 +149,7 @@ div.white-bg{
 div.display-card{
   // width: 20rem;
   height: 16rem;
+  // min-width: 297px;
   // background: url('https://milocostudios.com/wp-content/themes/miloco/timthumb.php?src=https://milocostudios.com/wp-content/uploads/2015/03/Longtermlet.jpg&w=734&h=370&zc=1&q=100');
   background-position: center;
   background-size: cover;
@@ -355,10 +342,13 @@ button.full-height{
 }
 
 .create-form, .edit-form {
+  background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('https://milocostudios.com/wp-content/themes/miloco/timthumb.php?src=https://milocostudios.com/admin/uploads/1516773721.7647.JPG&w=1600&h=900&zc=1&q=100');
+  background-position: center;
+  background-size: cover;
   Form {
     border: solid 1px rgb(215, 215, 215);
     border-radius: 5px;
-    padding: 18px;
+    padding: 12px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     background-color: whitesmoke;
   }
@@ -416,12 +406,29 @@ button.full-height{
 
 // Login & Register
 
+.login {
+  background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('https://milocostudios.com/wp-content/themes/miloco/timthumb.php?src=https://milocostudios.com/admin/uploads/1516773721.7647.JPG&w=1600&h=900&zc=1&q=100');
+}
+
+.register {
+  min-height: 700px;
+  background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('https://milocostudios.com/wp-content/themes/miloco/timthumb.php?src=https://milocostudios.com/admin/uploads/1480228651.476.jpg&w=1600&h=900&zc=1&q=100');
+  .checkbox {
+    margin-right: 5px;
+  }
+}
+
+.edit-user {
+  min-height: 900px;
+  background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('https://milocostudios.com/wp-content/themes/miloco/timthumb.php?src=https://milocostudios.com/admin/uploads/1503923634.5575.jpeg&w=1600&h=900&zc=1&q=100');
+}
+
 .login, .register, .edit-user {
-  height: 80vh;
-  min-height: 600px;
+  height: 120vh;
+  // min-height: 800px;
   background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  background-size: cover;
+  background-position: center;
   Form {
     border-radius: 5px;
     padding: 12px;
@@ -434,33 +441,42 @@ button.full-height{
   }
 }
 
-.login {
-  background-image: url('https://res.cloudinary.com/dn11uqgux/image/upload/v1629407610/sei_project_3_studio_images/blackbird_studio1_wxndsw.jpg');
-}
-
-.register {
-  min-height: 640px;
-  background-image: url('https://res.cloudinary.com/dn11uqgux/image/upload/v1629408030/sei_project_3_studio_images/a_sharp1_idhzec.jpg');
-  .checkbox {
-    margin-right: 5px;
-  }
-}
-
-.edit-user {
-  height: 95vh;
-  // background-image: url('https://res.cloudinary.com/dn11uqgux/image/upload/v1629817113/sei_project_3_studio_images/wisseloord1.php_rzwwjz.jpg');
-  background-image: url('https://milocostudios.com/wp-content/themes/miloco/timthumb.php?src=https://milocostudios.com/admin/uploads/1503923634.5575.jpeg&w=1600&h=900&zc=1&q=100');
-}
-
 .form-text {
   color: red;
 }
+.flexi-col-btn-special{
+  display: flex;
+  align-items: flex-end;
+}
 
+.display-right-here{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.max-height-500px{
+  max-height: 500px;
+}
+
+.flexi-col-end{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flexi-end-col{
+  display: flex;
+  align-items: flex-end;
+}
 // Profile
 
 .profile-page {
   .list {
     margin-bottom: 0;
+  }
+  .studio-indent {
+    margin-left: 12px;
   }
   .btn {
     margin: 10px;
@@ -479,6 +495,24 @@ button.full-height{
   }
 }
 
+// .about-img {
+//   background-attachment: fixed;
+//   background-position: bottom;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// }
+
+.about-img {
+  background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('https://milocostudios.com/wp-content/themes/miloco/timthumb.php?src=https://milocostudios.com/wp-content/uploads/2015/06/201506021159432951211201505261919002697303airlab_1_flat1.jpg&w=1600&h=900&zc=1&q=100');
+}
+
+.contact-us-img {
+  background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url('https://milocostudios.com/wp-content/themes/miloco/timthumb.php?src=https://milocostudios.com/wp-content/uploads/2019/06/silvershark-hero.jpg&w=1600&h=900&zc=1&q=100');
+}
+
+.footer-link-pages {
+  min-height: 100vh;
+}
 
 .footer {
   position: absolute;
@@ -502,6 +536,14 @@ button.full-height{
   .row {
     margin: 0 auto;
   }
+}
+
+.parallax {
+  height: 70vh;
+  background-attachment: fixed;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @media only screen and (max-width: 575px) {

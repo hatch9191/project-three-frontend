@@ -1,6 +1,17 @@
+import { Container } from 'react-bootstrap'
+
 function ContactUs() {
   return (
-    <div className="terms">
+    <div className="terms footer-link-pages">
+      <Container fluid className="no-pad contact-us-img parallax">
+        <div className="py-4"></div>
+        <div className="pt-4"></div>
+        <div className="pt-4"></div>
+        <div className="pt-4"></div>
+        < div className="px-4 py-5 text-center" >
+          <h1 className="display-5 fs-1">Contact AirStudio</h1>
+        </div >
+      </Container >
       <div className="py-4"></div>
       <div className="px-4 py-2">
         <div className="container-sm py-4">
@@ -19,6 +30,10 @@ function ContactUs() {
           <p><strong>Email</strong></p>
           <ul>
             <li>admin@airstudio.co.uk</li>
+          </ul>
+          <p><strong>Phone</strong></p>
+          <ul>
+            <li>+44 (0) 207 232 0009</li>
           </ul>
         </div>
       </div>

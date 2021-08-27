@@ -1,7 +1,7 @@
 function Cookies() {
   return (
     <>
-      <div className="cookies">
+      <div className="cookies footer-link-pages">
         <div className="py-4"></div>
         <div className="px-4 py-2">
           <div className="container-sm py-4">

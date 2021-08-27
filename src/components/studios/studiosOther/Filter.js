@@ -11,11 +11,70 @@ function Filter({ location }) {
   // const [lookUp, setLookUp] = React.useState(null)
   // const [state, setState] = React.useState(false)
 
+
   const [viewport, setViewport] = React.useState({
     latitude: 51.0,
     longitude: 0.0,
-    zoom: 8,
+    zoom: 4,
   })
+
+  React.useEffect(() => {
+    const handleView = () => {
+      if (location.state.continentValue.continentValue === 'europe') {
+        setViewport({
+          latitude: 54.0,
+          longitude: 15.0,
+          zoom: 3,
+        })
+      } else if (location.state.continentValue.continentValue === 'north america') {
+        setViewport({
+          latitude: 48.0,
+          longitude: -101.0,
+          zoom: 3,
+        })
+      } else if (location.state.townValue.townValue === 'london') {
+        setViewport({
+          latitude: 51.5,
+          longitude: 0.0,
+          zoom: 7,
+        })
+      } else if (location.state.accommodationValue.accommodationValue === 'not all') {
+        setViewport({
+          latitude: 54.5,
+          longitude: 15.0,
+          zoom: 3,
+        })
+      } else if (location.state.continentValue.continentValue === 'south america') {
+        setViewport({
+          latitude: -19.0,
+          longitude: -63.0,
+          zoom: 2,
+        })
+      } else if (location.state.continentValue.continentValue === 'oceania') {
+        setViewport({
+          latitude: -28.0,
+          longitude: 502.0,
+          zoom: 3,
+        })
+      } else if (location.state.continentValue.continentValue === 'asia') {
+        setViewport({
+          latitude: 34.0,
+          longitude: 460.0,
+          zoom: 2,
+        })
+      } else if (location.state.continentValue.continentValue === 'all') {
+        setViewport({
+          latitude: 46.0,
+          longitude: 0.0,
+          zoom: 1,
+        })
+      }
+    }
+    handleView()
+  }, [location.state.continentValue.continentValue, location.state.accommodationValue.accommodationValue, location.state.townValue.townValue]
+  )
+
+
   const [popup, setPopup] = React.useState(null)
 
 
@@ -37,9 +96,11 @@ function Filter({ location }) {
     setSearchValue(e.target.value)
   }
 
+
+
   return (
     <>
-      <div className="py-4"></div>
+      {/* <div className="py-4"></div> */}
       <div className="container-fluid">
         <div className="row">
           <div className="col">

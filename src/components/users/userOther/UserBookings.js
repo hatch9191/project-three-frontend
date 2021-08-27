@@ -1,10 +1,10 @@
 import { Container, Row, Col, Button, Modal } from 'react-bootstrap'
 import React from 'react'
 import { deleteBooking } from '../../../lib/api'
-import { useParams, useHistory } from 'react-router'
+import { useHistory } from 'react-router'
 
 function UserBookings({ location }) {
-  const { userId } = useParams()
+  // const { userId } = useParams()
   const history = useHistory()
 
   const user = location.state.user.user
@@ -68,7 +68,7 @@ function UserBookings({ location }) {
                   <div key={booking.studioId} className="list-group-item">
                     <p className="fw-bold pt-3">{booking.name}</p>
                     <hr className="w-50"></hr>
-                    {booking.bookings.filter(booking => booking.bookedBy === user._id).map(booked => (<Container key={booked._id}><Row><Col><p > <span className="fw-bold">Booked From:</span> {booked.bookedFrom} <br></br> <span className="fw-bold"> Booked To:</span> {booked.bookedTo}<br></br> <span className="fw-bold"> Booking Id:</span> {booked._id}</p></Col><Col className="cancel-booking-flexi"><Button onClick={() => [setModalShow(true), setBookingToDelete(booked._id)]} >Cancel Booking</Button></Col></Row><hr></hr></Container>))}
+                    {booking.bookings.filter(booking => booking.bookedBy === user._id).map(booked => (<Container key={booked._id}><Row><Col><p > <span className="fw-bold">Booked From:</span> {booked.bookedFrom} <br></br> <span className="fw-bold"> Booked To:</span> {booked.bookedTo}<br></br> <span className="fw-bold"> Booking Id:</span> {booked._id}</p></Col><Col className="cancel-booking-flexi"><Button onClick={() => [setModalShow(true), setBookingToDelete(booked._id)]} className="btn-danger">Cancel Booking</Button></Col></Row><hr></hr></Container>))}
                   </div>
                 </>
               ))}

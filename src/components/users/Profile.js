@@ -7,6 +7,7 @@ import CardSmall from '../cards/CardSmall'
 import Error from '../common/Error'
 import Loading from '../common/Loading'
 import { removeToken } from '../../lib/auth'
+import CardBookedDisplay from '../cards/CardBookedDisplay'
 
 function Profile({ user, setUser }) {
 
@@ -109,11 +110,12 @@ function Profile({ user, setUser }) {
             <div className="px-4 py-2">
               <div className="container-sm py-4">
                 <h2 className="fs-2">Your Booked Studios</h2>
+                <hr />
                 <div className="row">
                   {!user.bookedStudio.length &&
                     <>
-                      <ListGroup as="ul">
-                        <ListGroup.Item as="li">
+                      <ListGroup as="ul" >
+                        <ListGroup.Item as="li" className="studio-indent">
                           You have not booked any Studios yets...<br />
                         </ListGroup.Item>
                       </ListGroup>
@@ -124,7 +126,8 @@ function Profile({ user, setUser }) {
                   }
                   {user.bookedStudio && (
                     user.bookedStudio.map(studio => (
-                      <CardSmall key={studio._id} studio={studio} />
+                      // <CardSmall key={studio._id} studio={studio} />
+                      <CardBookedDisplay key={studio._id} studio={studio} />
                     ))
                   )}
                 </div>
@@ -146,11 +149,12 @@ function Profile({ user, setUser }) {
             <div className="px-4 py-2">
               <div className="container-sm py-4">
                 <h2 className="fs-2">Your Favorite Studios</h2>
+                <hr />
                 <div className="row">
 
                   {!user.favouritedStudio.length &&
                     <ListGroup as="ul">
-                      <ListGroup.Item as="li">
+                      <ListGroup.Item as="li" className="studio-indent">
                         You have not liked any Studios yets...<br />
                         <Link to="/" className="profile-link">
                           <button type="button" className="btn btn-info px-5">Browse Studios</button>
@@ -169,6 +173,7 @@ function Profile({ user, setUser }) {
             <div className="px-4 py-2">
               <div className="container-sm py-4 ">
                 <h2 className="fs-2 pb-1">Personal Information</h2>
+                <hr />
                 <ListGroup as="ul">
                   <ListGroup.Item as="li">
                     <strong className="fw-bold bold">Avatar:</strong><br /> {!user.avatar && <p className="text-muted list">Please add &apos;Avatar&apos; image by clicking the Edit button below</p>}
@@ -196,6 +201,7 @@ function Profile({ user, setUser }) {
             <div className="px-4 py-2">
               <div className="container-sm py-4 go-right">
                 <h2 className="fs-2">Your Studios</h2>
+                <hr />
                 <div className="row">
                   {user.addedStudio && (
                     user.addedStudio.map(studio => (
@@ -206,7 +212,7 @@ function Profile({ user, setUser }) {
                 {!user.addedStudio.length && (
                   <>
                     <ListGroup as="ul">
-                      <ListGroup.Item as="li">
+                      <ListGroup.Item as="li" className="studio-indent">
                         You have not listed any Studios yets... <br />
 
                       </ListGroup.Item>
@@ -223,6 +229,7 @@ function Profile({ user, setUser }) {
             <div className="px-4 py-2">
               <div className="container-sm py-4">
                 <h2 className="fs-2">Account Options</h2>
+                <hr />
                 <ListGroup as="ul">
                   <ListGroup.Item as="li">
                     <strong>Deactivate Your Account</strong> <br />
