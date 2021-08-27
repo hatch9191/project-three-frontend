@@ -10,6 +10,7 @@ function ShowPageMap({ studio }) {
     latitude: studio.location.longitude,
     longitude: studio.location.latitude,
     zoom: 12,
+    scrollZoom: false,
   })
   const [popup, setPopup] = React.useState(null)
 
@@ -25,6 +26,7 @@ function ShowPageMap({ studio }) {
               mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
               height="100%"
               width="100%"
+              
               mapStyle='mapbox://styles/mapbox/streets-v11'
               {...viewport}
               onClick={() => setPopup(null)}

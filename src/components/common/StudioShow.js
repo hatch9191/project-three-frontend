@@ -13,7 +13,6 @@ import BookingCard from '../cards/BookingCard'
 import CommentSection from '../comments/CommentSection'
 import ShowPageMap from '../studios/studiosOther/ShowPageMap'
 import { studioFavourited } from '../../lib/api'
-// import StudioInformationCard from '../studios/studiosOther/StudioInformationCard'
 import { profileUser } from '../../lib/api'
 import PromptLogin from '../studios/studiosOther/PromptLogin'
 
