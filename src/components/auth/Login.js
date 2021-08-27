@@ -35,7 +35,7 @@ function Login() {
 
   return (
     <>
-      <Container className="login parallax" fluid>
+      <Container className="login" fluid>
         <Row>
           <Col className="outer-col"></Col>
           <Col xs={6} className="form-vertical-align">

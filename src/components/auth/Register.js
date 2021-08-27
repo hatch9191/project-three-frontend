@@ -39,7 +39,7 @@ function Register() {
 
   return (
     <>
-      <Container className="register parallax" fluid>
+      <Container className="register" fluid>
         <Row>
           <Col className="outer-col"></Col>
           <Col xs={6} className="form-vertical-align">

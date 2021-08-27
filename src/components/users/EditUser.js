@@ -54,7 +54,7 @@ function EditUser() {
 
   return (
     <>
-      <Container className="edit-user parallax" fluid>
+      <Container className="edit-user" fluid>
         <Row>
           <Col className="outer-col"></Col>
           <Col xs={6} className="form-vertical-align">
