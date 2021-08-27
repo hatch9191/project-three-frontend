@@ -97,21 +97,21 @@ function StudioShow({ loggedIn, user, setUser }) {
                   variant="info"
                   type="submit"
                   onClick={executeScroll}>
-                    Book This Studio Now</Button>
+                  Book This Studio Now</Button>
                 <br />
                 {!studio.favouritedBy.some(favourite => favourite._id === user._id) && loggedIn && (
                   <Button
                     className="full-height fav-btn"
                     variant="dark"
                     onClick={handleFavourite}>
-                      🤍 Add To Favourites</Button>
+                    🤍 Add To Favourites</Button>
                 )}
                 {studio.favouritedBy.some(favourite => favourite._id === user._id) && loggedIn && (
                   <Button
                     className="full-height fav-btn"
                     variant="secondary"
                     onClick={handleFavourite}>
-                      ♥️ Favourited</Button>
+                    ♥️ Favourited</Button>
                 )}
               </div>
             </div >
@@ -214,8 +214,8 @@ function StudioShow({ loggedIn, user, setUser }) {
 
 
 
-          
-        
+
+
           <div className="py-3"></div>
           {studio.previousClientsOne &&
             <div className="container-sm py-4">

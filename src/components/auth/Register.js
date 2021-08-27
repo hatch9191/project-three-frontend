@@ -122,7 +122,8 @@ function Register() {
                 </Form.Check>
                 {formErrors.acceptTerms && (
                   <Form.Text className="text-muted">
-                    {formErrors.acceptTerms}
+                    {/* {formErrors.acceptTerms} */}
+                    Plaese Accpt our T&Cs
                   </Form.Text>
                 )}
               </Form.Group>
