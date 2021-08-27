@@ -1,8 +1,9 @@
-import { useParams } from 'react-router-dom'
+import { useParams, Link, useHistory } from 'react-router-dom'
 import React, { useRef } from 'react'
 import { Container, Button } from 'react-bootstrap'
 
 import { getSingleStudio } from '../../lib/api'
+import { deleteStudio } from '../../lib/api'
 import Error from './Error'
 import Loading from './Loading'
 import ExtraImagesCard from '../studios/studiosOther/ExtraImagesCard'
@@ -16,11 +17,13 @@ import { studioFavourited } from '../../lib/api'
 import { profileUser } from '../../lib/api'
 import PromptLogin from '../studios/studiosOther/PromptLogin'
 
+
 function StudioShow({ loggedIn, user, setUser }) {
   const { studioId } = useParams()
   const [studio, setStudio] = React.useState(null)
   const [isError, setIsError] = React.useState(false)
   const isLoading = !studio && !isError
+  const history = useHistory()
 
   React.useEffect(() => {
     const getData = async () => {
@@ -53,6 +56,14 @@ function StudioShow({ loggedIn, user, setUser }) {
     }
   }
 
+  const handleDelete = async () => {
+    try {
+      await deleteStudio(studio._id)
+      history.push('/')
+    } catch (err) {
+      console.log(err)
+    }
+  }
   const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
   const myRef = useRef(null)
   const executeScroll = () => scrollToRef(myRef)
@@ -186,11 +197,13 @@ function StudioShow({ loggedIn, user, setUser }) {
                 </div>
               </div>
               <div className="py-3"></div>
-              {isOwner() ?
+              {isOwner(studio.addedBy._id) ?
                 <>
                   <div key={studio._id}>
-                    <button type="button" className="btn btn-info px-5 mx-3">Update Studio</button>
-                    <button type="button" className="btn btn-danger px-5 mx-3">Delete Studio</button>
+                    <Link to={`/studios/${studio._id}/edit`} className="profile-link">
+                      <button type="button" className="btn btn-info px-5 mx-3">Edit Studio</button>
+                    </Link>
+                    <button type="button" onClick={handleDelete} className="btn btn-danger px-5 mx-3">Delete Studio</button>
                   </div>
                 </>
                 :
@@ -202,7 +215,8 @@ function StudioShow({ loggedIn, user, setUser }) {
 
 
 
-
+          
+        
           <div className="py-3"></div>
           {studio.previousClientsOne &&
             <div className="container-sm py-4">

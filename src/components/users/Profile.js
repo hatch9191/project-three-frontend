@@ -217,11 +217,13 @@ function Profile({ user, setUser }) {
 
                       </ListGroup.Item>
                     </ListGroup>
-                    <Link to="/studios/new" className="profile-link">
-                      <button type="button" className="btn btn-info px-5">List Your Studio</button>
-                    </Link>
                   </>
                 )}
+                <Link to="/studios/new" className="profile-link">
+                  <button type="button" className="btn btn-info px-5">List Your Studio</button>
+                </Link>
+                  
+                
               </div>
             </div>
             <div className="px-4 py-2">
