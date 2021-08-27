@@ -94,7 +94,7 @@ function StudioShow({ loggedIn, user, setUser }) {
 
                 <h1 className="display-5 fw-bold">{studio.name}</h1>
                 <Button
-                  className="full-height"
+                  className="full-height fav-btn"
                   variant="info"
                   type="submit"
                   onClick={executeScroll}>
@@ -223,13 +223,13 @@ function StudioShow({ loggedIn, user, setUser }) {
               <h2 className="fs-1">Previous Clients</h2>
               <hr />
               <div className="row profile-cards">
-                {studio.previousClientsOne.name &&
+                {studio.previousClientsOne &&
                   <ClientCard key={studio.previousClientsOne._id} client={studio.previousClientsOne} />
                 }
-                {studio.previousClientsTwo.name &&
+                {studio.previousClientsTwo &&
                   <ClientCard key={studio.previousClientsTwo._id} client={studio.previousClientsTwo} />
                 }
-                {studio.previousClientsThree.name &&
+                {studio.previousClientsThree &&
                   <ClientCard key={studio.previousClientsThree._id} client={studio.previousClientsThree} />
                 }
               </div>

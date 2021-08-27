@@ -4,7 +4,6 @@ import { deleteBooking } from '../../../lib/api'
 import { useHistory } from 'react-router'
 
 function UserBookings({ location }) {
-  // const { userId } = useParams()
   const history = useHistory()
 
   const user = location.state.user.user
