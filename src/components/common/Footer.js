@@ -31,8 +31,8 @@ function Footer() {
             <Col sm>
               <Nav defaultActiveKey="/" className="flex-column">
                 <Nav.Link as={Link} to="/contact-us" className="footer-text all" >Contact Us</Nav.Link>
-                <Nav.Link as={Link} className="footer-text all">Privacy</Nav.Link>
-                <Nav.Link as={Link} to="terms" className="footer-text all">Terms &amp; Conditions</Nav.Link>
+                <Nav.Link as={Link} to="/privacy" className="footer-text all">Privacy</Nav.Link>
+                <Nav.Link as={Link} to="/terms" className="footer-text all">Terms &amp; Conditions</Nav.Link>
               </Nav>
             </Col>
           </Row>

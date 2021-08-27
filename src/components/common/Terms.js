@@ -1,14 +1,10 @@
 import React from 'react'
 
 function Terms() {
-
-  // React.useEffect(() => {
-  //   window.scrollTo(0, 0)
-  // }, [])
   
   return (
     <>
-      <div className="terms">
+      <div className="terms footer-link-pages">
         <div className="py-4"></div>
         <div className="px-4 py-2">
           <div className="container-sm py-4">

@@ -22,6 +22,7 @@ function CardLargeTown({ studios }) {
     <>
       <div className="mb-3">
         <h2 className="fs-1">Discover London&rsquo;s Hidden Gems</h2>
+        <hr />
       </div>
       <div className="card mb-3 mr-3 display-card-hor card-shadow" >
         <div className="row g-0">

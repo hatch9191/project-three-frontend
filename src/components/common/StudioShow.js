@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import React from 'react'
+import React, { useRef } from 'react'
 import { Container, Button } from 'react-bootstrap'
 
 import { getSingleStudio } from '../../lib/api'
@@ -14,7 +14,7 @@ import ShowPageMap from '../studios/studiosOther/ShowPageMap'
 import { studioFavourited } from '../../lib/api'
 // import StudioInformationCard from '../studios/studiosOther/StudioInformationCard'
 import { profileUser } from '../../lib/api'
-
+import PromptLogin from '../studios/studiosOther/PromptLogin'
 
 function StudioShow({ loggedIn, user, setUser }) {
   const { studioId } = useParams()
@@ -53,6 +53,10 @@ function StudioShow({ loggedIn, user, setUser }) {
     }
   }
 
+  const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
+  const myRef = useRef(null)
+  const executeScroll = () => scrollToRef(myRef)
+
   return (
     <>
       {isError && <div className="px-4 py-5 text-center"><Error /></div>}
@@ -64,38 +68,37 @@ function StudioShow({ loggedIn, user, setUser }) {
             style={{
               background: `linear-gradient(rgba(0,0,0,.05), rgba(0,0,0,.05)), url(${studio.mainImage})`,
               height: '70vh',
-
               backgroundSize: 'cover',
               backgroundPosition: 'bottom',
               filter: 'drop-shadow(0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.2))',
               backgroundAttachment: 'fixed',
               backgroundRepeat: 'no-repeat',
-
-            }}
-
-          >
-            < div className="px-4 py-5 text-center" >
+            }}>
+            <div className="px-4 py-5 text-center" >
               <div className=" px-3 py-5">
                 <div className="pt-4"></div>
                 <div className="pt-4"></div>
-
                 <h1 className="display-5 fw-bold">{studio.name}</h1>
                 <Button
                   className="full-height"
                   variant="info"
-                  type="submit">Book This Studio Now</Button>
+                  type="submit"
+                  onClick={executeScroll}>
+                    Book This Studio Now</Button>
                 <br />
                 {!studio.favouritedBy.some(favourite => favourite._id === user._id) && loggedIn && (
                   <Button
                     className="full-height fav-btn"
                     variant="dark"
-                    onClick={handleFavourite}>🤍 Add To Favourites</Button>
+                    onClick={handleFavourite}>
+                      🤍 Add To Favourites</Button>
                 )}
                 {studio.favouritedBy.some(favourite => favourite._id === user._id) && loggedIn && (
                   <Button
                     className="full-height fav-btn"
                     variant="secondary"
-                    onClick={handleFavourite}>♥️ Favourited</Button>
+                    onClick={handleFavourite}>
+                      ♥️ Favourited</Button>
                 )}
               </div>
             </div >
@@ -111,6 +114,9 @@ function StudioShow({ loggedIn, user, setUser }) {
                 {studio.altImageTwo &&
                   <ExtraImagesCard key={studio.altImageTwo} img={studio.altImageTwo} />
                 }
+                {studio.altImageThree &&
+                  <ExtraImagesCard key={studio.altImageThree} img={studio.altImageThree} />
+                }
               </div>
             </div>
           </div>
@@ -118,7 +124,8 @@ function StudioShow({ loggedIn, user, setUser }) {
           <div className="pt-3"></div>
           <div className="px-4 py-2">
             <div className="container-sm py-4 ">
-              <h2 className="fs-2 pb-1">Welcome to {studio.name}</h2>
+              <h2 className="fs-1 pb-1">Welcome to {studio.name}</h2>
+              <hr />
               <div className="card small-width">
 
                 <div className="list-group list-group-flush">
@@ -196,35 +203,48 @@ function StudioShow({ loggedIn, user, setUser }) {
           <div className="py-3"></div>
           {studio.previousClientsOne &&
             <div className="container-sm py-4">
-              <h2 className="fs-1">Studio Clients</h2>
-              <div className="row">
+              <h2 className="fs-1">Previous Clients</h2>
+              <hr />
+              <div className="row profile-cards">
                 {studio.previousClientsOne.name &&
                   <ClientCard key={studio.previousClientsOne._id} client={studio.previousClientsOne} />
                 }
                 {studio.previousClientsTwo.name &&
                   <ClientCard key={studio.previousClientsTwo._id} client={studio.previousClientsTwo} />
                 }
+                {studio.previousClientsThree.name &&
+                  <ClientCard key={studio.previousClientsThree._id} client={studio.previousClientsThree} />
+                }
               </div>
             </div>
           }
-
-
-
           <div className="py-3"></div>
-          {isAuthenticated() ?
-            <div className="px-4 py-4">
-              <div className="container-sm py-4">
-                <BookingCard studio={studio} />
-              </div>
+          <div ref={myRef} className="container-sm py-4">
+            <hr />
+          </div>
+          {/* <div className="py-3"></div> */}
+          <div className="px-4 py-4">
+            <div className="container-sm py-4">
+              {isAuthenticated() ?
+                <BookingCard name="BookingCard" studio={studio} />
+                :
+                <PromptLogin name="PromptLogin" />
+              }
             </div>
-            :
-            ''
-          }
+          </div>
           <div className="py-3"></div>
+          <div className="container-sm py-4">
+            <h2 className="fs-1">Reviews</h2>
+            <hr />
+          </div>
           {(
             <CommentSection studio={studio} setStudio={setStudio} />
           )}
           <div className="py-3"></div>
+          <div className="container-sm py-4">
+            <h2 className="fs-1">Location</h2>
+            <hr />
+          </div>
           {<ShowPageMap studio={studio} />}
 
         </>

@@ -39,7 +39,7 @@ function Filter({ location }) {
 
   return (
     <>
-      <div className="py-4"></div>
+      {/* <div className="py-4"></div> */}
       <div className="container-fluid">
         <div className="row">
           <div className="col">

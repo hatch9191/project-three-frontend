@@ -103,6 +103,7 @@ function Home({ loggedIn, setLoggedIn, setUser }) {
       <div className="px-4 py-4">
         <div className="container-sm py-4" amp-fx="parallax" data-parallax-factor="1.7">
           <h2 className="fs-1" amp-fx="parallax" data-parallax-factor="1.7">Browse All Studios</h2>
+          <hr />
           <div className="row">
             {isError && <Error />}
             {loading && <Loading />}
@@ -124,6 +125,7 @@ function Home({ loggedIn, setLoggedIn, setUser }) {
       <div className="px-4 py-4">
         <div className="container-sm py-4">
           <h2 className="fs-1">Explore Our Largest Studio Complexes</h2>
+          <hr />
           <div className="row">
             {isError && <Error />}
             {loading && <Loading />}

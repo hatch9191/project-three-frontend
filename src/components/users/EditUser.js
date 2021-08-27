@@ -121,13 +121,6 @@ function EditUser() {
                   value={formData.avatar}
                   onChange={handleImageUpload}
                 />
-                {/* <Form.Control 
-                  type="text" 
-                  placeholder="Insert ImageURL"
-                  name="avatar"
-                  value={formData.avatar}
-                  onChange={handleChange}
-                /> */}
                 {formErrors.avatar && (
                   <Form.Text className="text-muted">
                     {formErrors.avatar}

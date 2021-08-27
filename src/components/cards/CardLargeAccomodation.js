@@ -25,7 +25,8 @@ function CardLargeAccomodation({ studios }) {
   return (
     <>
       <div className="mb-3">
-        <h2 className="fs-1">Studios With Accomodation</h2>
+        <h2 className="fs-1">Studios With Accommodation</h2>
+        <hr />
       </div>
       <div className="card mb-3 mr-3 display-card-hor card-shadow" >
         <div className="row g-0">

@@ -21,6 +21,7 @@ import ContactUs from './components/common/ContactUs'
 import About from './components/common/About'
 import UserBookings from './components/users/userOther/UserBookings'
 import ScrollTop from './lib/ScrollTop'
+import Privacy from './components/common/Privacy'
 
 function App() {
 
@@ -77,6 +78,7 @@ function App() {
         </Route>
         <Route path="/about" component={About} />
         <Route path="/cookies" component={Cookies} />
+        <Route path="/privacy" component={Privacy} />
         <Route path="/contact-us" component={ContactUs} />
         <Route path="/terms" component={Terms} />
       </Switch>

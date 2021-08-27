@@ -169,7 +169,7 @@ function CreateStudio() {
   // }
 
   return (
-    <Container className="create-form">
+    <Container className="create-form" fluid>
       <div className="form-wrap">
         <div className="form-adjust">
           <Form onSubmit={handleSubmit}>
