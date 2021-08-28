@@ -53,7 +53,7 @@ function UserBookings({ location }) {
 
   return (
     <>
-      <div className="px-4 py-2">
+      <div className="px-4 py-2 height-50vh-bm">
         <div className="container-sm py-4 ">
           <h1>Your Bookings</h1>
           <DeactivateModal
