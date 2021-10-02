@@ -81,5 +81,7 @@ You can view the deployed project [HERE](https://bit.ly/3zP1Qtb).
 
 - Install dependencies in both client and server folders using `npm i`
 - Start the database `mongod --dbpath ~/data/db`
-- In the server folder, run the server using with ```javascript npm run dev```
+- In the server folder, run the server using with ```javascript 
+npm run dev
+```
 - In the client folder, run the frontend with  `npm run dev`
