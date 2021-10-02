@@ -184,19 +184,19 @@ We had also built out a Favourite controller but hadn’t thought too much about
  
 <>
 {!studio.favouritedBy.some(favourite => favourite._id === user._id) && loggedIn && (
-                 <Button
-                   className="full-height fav-btn"
-                   variant="dark"
-                   onClick={handleFavourite}>
-                   🤍 Add To Favourites</Button>
-               )}
-               {studio.favouritedBy.some(favourite => favourite._id === user._id) && loggedIn && (
-                 <Button
-                   className="full-height fav-btn"
-                   variant="secondary"
-                   onClick={handleFavourite}>
-                   ♥️ Favourited</Button>
-               )}
+ <Button
+   className="full-height fav-btn"
+   variant="dark"
+   onClick={handleFavourite}>
+   🤍 Add To Favourites</Button>
+)}
+{studio.favouritedBy.some(favourite => favourite._id === user._id) && loggedIn && (
+ <Button
+   className="full-height fav-btn"
+   variant="secondary"
+   onClick={handleFavourite}>
+   ♥️ Favourited</Button>
+)}
 </>
 ```
 
