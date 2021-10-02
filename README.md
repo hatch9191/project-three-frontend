@@ -17,10 +17,10 @@
 
 This was the first of the more ambitious projects on the GA course. This was also the first time I was working in a team of 3. It didn’t take long for us to agree on the concept of some sort of Airbnb clone, but with a slightly different spin on it. We came up with the idea of recording-studios as we felt there was a good chance to create models with interesting data and some good relationships between the models.
 
-Please feel free to create your own account or login using the following credentials - 
+Please feel free to create your own account or login using the following credentials:
 
-email: harry@email.com
-password: pass
+- email - harry@email.com
+- password - pass
 
 You can view the deployed project [HERE](https://bit.ly/3zP1Qtb).
 
