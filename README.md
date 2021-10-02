@@ -13,7 +13,7 @@
 - Future Improvements
 - Key Learnings
 
-## Project Overview
+## Project Overview
 
 This was the first of the more ambitious projects on the GA course. This was also the first time I was working in a team of 3. It didn’t take long for us to agree on the concept of some sort of Airbnb clone, but with a slightly different spin on it. We came up with the idea of recording-studios as we felt there was a good chance to create models with interesting data and some good relationships between the models.
 
