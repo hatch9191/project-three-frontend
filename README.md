@@ -76,6 +76,8 @@ You can view the deployed project [HERE](https://bit.ly/3zP1Qtb).
 - Excalidraw (Wireframing)
 - Netlify (Frontend Deployment)
 - Heroku (Backend Deployment)
+- Zoom
+- Slack
 
 ## Code Installation
 
