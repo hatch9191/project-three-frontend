@@ -71,7 +71,7 @@ You can view the deployed project [HERE](https://bit.ly/3zP1Qtb).
 - npm
 - Insomnia
 - Git
-- Github
+- GitHub
 - Firefox Developer Edition
 - Excalidraw (Wireframing)
 - Netlify (Frontend Deployment)
@@ -91,7 +91,7 @@ You can view the deployed project [HERE](https://bit.ly/3zP1Qtb).
 
 ### Day 1-2 - Bootstrap Exploration, Planning & Backend Setup
 
-We started off the project with discussion on some of the ideas and technologies we wanted to use. We were given free reign on what sort of CSS framework we would like to use (if any). We agreed that Bootstrap would be a good option as its widely used across the industry. As none of us had used it before I suggested that we spend half an hour or so playing around with it and reading the docs to double check if it would be a suitable tool to learn and use in the timeframe we had. This was a really good task as it settled the nerves and gave us a chance to come up with some initial styling concepts before we started the wireframes (see images below) and planning lists. 
+We started off the project with discussion on some of the ideas and technologies we wanted to use. We were given free reign on what sort of CSS framework we would like to use (if any). We agreed that Bootstrap would be a good option as it is widely used across the industry. As none of us had used it before I suggested that we spend half an hour or so playing around with it and reading the docs to double check if it would be a suitable tool to learn and use in the timeframe we had. This was a really good task as it settled the nerves and gave us a chance to come up with some initial styling concepts before we started the wireframes (see images below) and planning lists. 
 
 <p align="center">
   <img src="https://res.cloudinary.com/dn11uqgux/image/upload/v1633176045/project-setup-test/Screenshot_2021-10-01_at_16.15.30_aenilo.png" />
